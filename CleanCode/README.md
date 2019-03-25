@@ -1,5 +1,4 @@
 ## Chapter 2: Meaningful names
-Rules:
 1. **Choose names that reveal intent** (choose them thoughtfully) - they are a tool that you can use to communicate with others. If you have to put a comment that describes your name, it is a bad name.
     
 2. **Avoid disinformation** - avoid words whose entrenched meanings vary from our intended meaning. Do not add number series or noise words. If names must be different, then they should also mean something different. Also the word variable should never appear in a variable name (The word table should never appear in a table name).
