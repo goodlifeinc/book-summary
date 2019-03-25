@@ -19,7 +19,7 @@
 
 5. **Avoid Encodings** - simply adds an extra burden. Do not put ```I``` infront interfaces. Instead of naming it ```IShapeFactory```, use ```ShapeFactory```. You don’t need to prefix member variables with ```m_``` ot anything similar. Your classes and functions should be small enough that you don’t need them. Encodings make your code ***HARD TO READ.***
 
-6. **Choose parse of speech well** - 
+6. **Choose parse of speech well** 
    - Class names - classes and objects should have noun or noun phrase. A class name should not be a verb.
 Use ```Customer```, ```WikiPage```, ```Account```, and ```AddressParser```and avoid: ```Manager```, ```Processor```, ```Data```, ```Info```.
    - Method names - methods should have verb or verb phrase names. Accessors, mutators, and predicates should be named for their value and prefixed with ```get```, ```set```, and ```is```. Use ```postPayment```, ```deletePage```, ```save```, ```getName```, ```setName```, ```isPosted```.
