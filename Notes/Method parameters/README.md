@@ -3,7 +3,7 @@
 Having too many method parameters affects the code readability and can cause lots of possible bugs. These bugs are hard to find.
 There are some things we can do to avoid using multiple constructor or method parameters.
 
-1. Using custom types:
+1. **Using custom types**:
 
     These custom types might be implemented as Data Transfer Objects (DTOs), JavaBeans, Value Objects, Reference Objects or any other custom type (typically a class or enum).
 
@@ -40,16 +40,16 @@ There are some things we can do to avoid using multiple constructor or method pa
 
     The three names are still a potential issue as the caller could provide them out of order, but we could write specific classes for FirstName, LastName, and MiddleName or create new class that represents a full name and has all three of those names as its attributes.
 
-    ADVANTAGES:
+    *ADVANTAGES:*
 
     Having multiple parameters of the same type makes it easier for the developer to mix up the order. It also reduces the ability of the IDE to match the appropriate suggestion with the parameter when using code completion. These custom types are helpful to an IDE as static compile-time checking. In general, it is better to move as much automatic checking as possible from runtime to compile time. The existence of these custom types makes it more flexible, because it's easier to add more details in the future.
 
-    DISADVANTAGES:
+    *DISADVANTAGES:*
 
     The custom type approach adds overhead of extra instantiations and use of memory. For example, the Name class requires instantiation of the Name class itself AND its encapsulated String. Also adds extra effort to write and test these custom types.
 
 
-2. Parameters Object
+2. **Parameters Object**
 
     ```java
         public Person createPerson( 
@@ -61,16 +61,16 @@ There are some things we can do to avoid using multiple constructor or method pa
     }
     ```
 
-    ADVANTAGES:
+    *ADVANTAGES:*
 
     The most obvious benefit is the reduction in number of parameters passed to a method or constructor. It is easier to understand a smaller number of parameters. Parameter objects also share one of the same benefits provided by custom types: the ability to add additional behaviors and characteristics to the parameter object for convenience functions.
 
-    DISADVANTAGES:
+    *DISADVANTAGES:*
 
     The primary drawback to the parameter object is a little extra work to design, implement, and test the class. If a developer starts bundling unrelated parameters together into a class just to reduce the number of parameters, that doesn't necessarily help the situation.
 
 
-3. Builder pattern
+3. **Builder pattern**
 
     ```java
     class Person {
@@ -122,19 +122,34 @@ There are some things we can do to avoid using multiple constructor or method pa
     }
     ```
 
-    ADVANTAGES:
+    *ADVANTAGES:*
 
     One advantages of the Builder patters use is the great improvement in terms of usability and readability. The parameters to the constructor are reduced and are provided in highly readable method calls.
 
     Another advantage of the Builder approach is the ability to acquire an object in a single statement and state without the object in multiple states problem presented by using "set" methods.
 
-    DISADVANTAGES:
+    *DISADVANTAGES:*
 
     The number of lines of code of a given class must be essentially doubled. There is a great chanse for a developer to forget to add support for a new attribute to the builder when they add that attribute to the main class.
    
+4. **Overloading** 
 
-Resources:
+5. **Method naming**
+
+6. **Method returns**
+
+7. **Mutable state**
+
+8. **Tooling**
+
+
+**Resources:**
 - https://www.javaworld.com/article/2074932/too-many-parameters-in-java-methods-part-1-custom-types.html
 - https://www.javaworld.com/article/2074935/too-many-parameters-in-java-methods--part-2--parameters-object.html
 - https://www.javaworld.com/article/2074938/too-many-parameters-in-java-methods-part-3-builder-pattern.html
+- https://www.javaworld.com/article/2074941/too-many-parameters-in-java-methods-part-4-overloading.html
+- https://www.javaworld.com/article/2074960/too-many-parameters-in-java-methods-part-5-method-naming.html
+- https://www.javaworld.com/article/2074943/too-many-parameters-in-java-methods--part-6--method-returns.html
+- https://www.javaworld.com/article/2074945/too-many-parameters-in-java-methods-part-7-mutable-state.html
+- https://www.javaworld.com/article/2074962/too-many-parameters-in-java-methods-part-8-tooling.html
 
