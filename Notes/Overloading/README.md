@@ -27,6 +27,7 @@ There is 2 types of overloading: method and constructor overloading.
      ```  
 
     **Changing a variable’s name is NOT overloading.** You cannot declare more than one method with the same name and the same number and type of arguments, because the compiler cannot tell them apart.
+   
     **Changing only the return type (same method name and parameters) will throw compilation error.** The compiler does not consider return type when differentiating methods, so you cannot declare two methods with the same signature even if they have a different return type.
 
 2. Constructor overloading
@@ -70,7 +71,7 @@ There are three important compiler techniques:
         }
     ```
 
-    For example when we pass the number 1 to the method, JVM automatically threats it as an int. If we have a method printNumber(byte a) and we pass 1 printNumber(1) we will get a compilation error.
+    For example when we pass the number 1 to the method, JVM automatically threats it as an ```int```. If we have a method ```printNumber(byte a)``` and we pass 1 ```printNumber(1)``` we will get a compilation error.
 
     ```java
         public class Test {
@@ -99,7 +100,7 @@ There are three important compiler techniques:
 
 2. Boxing (autoboxing and unboxing)
 
-    2.1. Autoboxing - automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. For example, converting an int to an Integer, a double to a Double, and so on.
+    2.1. Autoboxing - automatic conversion that the Java compiler makes between the primitive types and their corresponding object wrapper classes. For example, converting an ```int``` to an ```Integer```, a ```double``` to a ```Double```, and so on.
 
     ```java
         List<Integer> numbers = new ArrayList<>();
@@ -108,7 +109,7 @@ There are three important compiler techniques:
         }
     ```
 
-    Although you add the int values as primitive types, rather than Integer objects, to numbers, the code compiles.That is because it creates an Integer object from i and adds the object to numbers. 
+    Although you add the ```int``` values as primitive types, rather than ```Integer``` objects, to ```numbers```, the code compiles. That is because it creates an ```Integer``` object from i and adds the object to ```numbers```. 
 
     The compiler converts the previous code to the following at runtime:
 
@@ -119,7 +120,7 @@ There are three important compiler techniques:
         }
     ```
 
-    2.2 Unboxing - converting an object of a wrapper type (Integer) to its corresponding primitive (int) value.
+    2.2 Unboxing - converting an object of a wrapper type ```Integer``` to its corresponding primitive ```int``` value.
 
     ```java
         public static int sumEven(List<Integer> numbers) {
@@ -133,7 +134,7 @@ There are three important compiler techniques:
         }
     ```
 
-    Because the remainder (%) and unary plus (+=) operators do not apply to Integer objects,the compiler invokes the intValue method to convert an Integer to an int at runtime.
+    Because the remainder ```%``` and unary plus ```+=``` operators do not apply to ```Integer``` objects,the compiler invokes the ```intValue``` method to convert an ```Integer``` to an ```int``` at runtime.
 
     ```java
         public static int sumEven(List<Integer> numbers) {
@@ -162,8 +163,8 @@ Tricky situations will arise from declaring a number directly: 1 will be int and
 
 
  Resources:
- https://www.javaworld.com/article/3268983/java-challengers-1-method-overloading-in-the-jvm.html
- https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html
- https://www.decodejava.com/widening-and-narrowing-in-java.htm
- https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html
- https://docs.oracle.com/javase/specs/jls/se7/html/jls-5.html
+ - https://www.javaworld.com/article/3268983/java-challengers-1-method-overloading-in-the-jvm.html
+ - https://docs.oracle.com/javase/tutorial/java/javaOO/methods.html
+ - https://www.decodejava.com/widening-and-narrowing-in-java.htm
+ - https://docs.oracle.com/javase/tutorial/java/data/autoboxing.html
+ - https://docs.oracle.com/javase/specs/jls/se7/html/jls-5.html
