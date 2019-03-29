@@ -70,8 +70,71 @@ There are some things we can do to avoid using multiple constructor or method pa
     The primary drawback to the parameter object is a little extra work to design, implement, and test the class. If a developer starts bundling unrelated parameters together into a class just to reduce the number of parameters, that doesn't necessarily help the situation.
 
 
+3. Builder pattern
+
+    ```java
+    class Person {
+        private final FullName name;
+        private final Address address;
+        private final Gender gender;
+
+        private Person(Builder builder) {
+            name = builder.name;
+            address = builder.address;
+            gender = builder.gender;
+        }
+
+        public FullName getName() {
+            return name;
+        }
+
+        public Address getAddress() {
+            return address;
+        }
+
+        public Gender getGender() {
+            return gender;
+        }
+
+        public static class Builder {
+            private final FullName name;
+            private Address address;
+            private Gender gender;
+
+            Builder(FullName name) {
+                this.name = name;
+            }
+
+            Builder address(Address address) {
+                this.address = address;
+                return this;
+            }
+
+            Builder gender(Gender gender) {
+                this.gender = gender;
+                return this;
+            }
+
+            public Person build(){
+                return new Person(this);
+            }
+        }
+    }
+    ```
+
+    ADVANTAGES:
+
+    One advantages of the Builder patters use is the great improvement in terms of usability and readability. The parameters to the constructor are reduced and are provided in highly readable method calls.
+
+    Another advantage of the Builder approach is the ability to acquire an object in a single statement and state without the object in multiple states problem presented by using "set" methods.
+
+    DISADVANTAGES:
+
+    The number of lines of code of a given class must be essentially doubled. There is a great chanse for a developer to forget to add support for a new attribute to the builder when they add that attribute to the main class.
+   
 
 Resources:
 - https://www.javaworld.com/article/2074932/too-many-parameters-in-java-methods-part-1-custom-types.html
 - https://www.javaworld.com/article/2074935/too-many-parameters-in-java-methods--part-2--parameters-object.html
+- https://www.javaworld.com/article/2074938/too-many-parameters-in-java-methods-part-3-builder-pattern.html
 
