@@ -18,7 +18,7 @@ Static factory method is simply a static method that returns an instance of the 
   
   Instance controll allows:
   * a class to guarantee that it is a singleton or noninstantiable 
-  * an immutable value class to make the guarantee that no two equal instances exist: ```a.equals(b)``` if and only if ```a == b```
+  * an immutable value class to make the guarantee that no two equal instances exist: ```a.equals(b)``` if and only if ```a==b```
 
 - **unlike constructors, static factory methods can return an object of any subtype of their return type**
 
@@ -48,11 +48,19 @@ Static factories and constructors do not scale well to large numbers of optional
 
    *Telescoping constructor pattern* - you provide a constructor with only the required parameters, another with a single optional parameter, a third with two optional parameters, and so on, culminating in a constructor with all the optional parameters.
    
-   Telescoping constructor pattern works, but it is hard to write client code when there are many parameters, and harder still to read it. The reader is left wondering what all those values mean and must carefully count parameters to find out.
+   Telescoping constructor pattern works, but it is hard to write client code when there are many parameters, and harder still to read it. The reader is left wondering what all those values mean and must carefully count parameters to find out. Also this constructor invocation will require many parameters that you don't want to set, but you are forced to pass a value anyway.
    
   *JavaBeans pattern* - you call a parameterless constructor to create the object and then call setter methods to set each required parameter and each optional parameter of interest.
   
-  Because construction is split across multiple calls, a JavaBean may be in an inconsistent state partway through its construction.
+  Because construction is split across multiple calls, a JavaBean **may be in an inconsistent state partway through its construction.**
+  ```java
+    NutritionFacts cocaCola = new NutritionFacts();
+    cocaCola.setServingSize(240);
+    cocaCola.setServings(8);
+    cocaCola.setCalories(100);
+    cocaCola.setSodium(35);
+    cocaCola.setCarbohydrate(27);
+  ```
   
   **Builder pattern** - Instead of making the desired object directly, the client calls a constructor (or static factory) with all of the required parameters and gets a builder object. Then the client calls setter-like methods on the builder object to set each optional parameter of interest. Finally, the client calls a parameterless build method to generate the object, which is typically immutable.
 
@@ -125,6 +133,7 @@ public class NutritionFacts {
 
 ### Item 3: Enforce the singleton property with a private constructor or an enum type
 Useful video: [Item 3 - 5](https://www.youtube.com/watch?v=kVuOveApdCk)
+
 A singleton is simply a class that is *instantiated exactly once.*
 
 Making a class a singleton can make it difficult to test its clients because it’s impossible to substitute a mock implementation for a singleton unless it implements an interface that serves as its type. 
@@ -141,7 +150,7 @@ There are two common ways to implement singletons:
 ```
 
 ```java
-  // Singleton with static factory
+  // Singleton with static factory - the API makes it clear that the class is a singleton.
   public class Elvis {
     private static final Elvis INSTANCE = new Elvis();
     private Elvis() { ... }
@@ -160,6 +169,7 @@ A third way to implement a singleton is to declare a single-element enum.
     public void leaveTheBuilding() { ... }
   }
 ```
+
 **A single-element enum type is often the best way to implement a singleton.** Note that you can’t use this approach if your singleton must extend a superclass other than ```Enum```.
 
 
@@ -182,7 +192,30 @@ The ```AssertionError``` isn’t strictly required, but it provides insurance in
 As a side effect, this idiom also prevents the class from being subclassed. All constructors must invoke a superclass constructor, explicitly or implicitly, and a subclass would have no accessible superclass constructor to invoke.
 
 ### Item 5: Prefer dependency injection to hardwiring resources
+**Static utility classes and singletons are inappropriate for classes whose behavior is parameterized by an underlying resource.**
+
+What is required is the ability to support multiple instances of the class, each of which uses the resource desired by the client. For example we can pass the resource into the constructor when creating a new instance. This is one form of dependency injection: the dictionary is a
+dependency of the spell checker and is injected into the spell checker when it is created.
+
+```java
+  public class SpellChecker {
+    private final Lexicon dictionary;
+
+    public SpellChecker(Lexicon dictionary) {
+      this.dictionary = Objects.requireNonNull(dictionary);
+    }
+
+    public boolean isValid(String word) { ... }
+    
+    public List<String> suggestions(String typo) { ... }
+  }
+```
+
+Remember: do not use a singleton or static utility class to implement a class that depends on one or more underlying resources whose behavior
+affects that of the class, and do not have the class create these resources directly. Instead, pass the resources, or factories to create them, into the constructor (or static factory or builder).
+
 ### Item 6: Avoid creating unnecessary objects
+
 Instead of creating new objects which are equivalen, reuse a single object. It makes it more understandable and faster. An object can always be reused if it is immutable.
 
 **NEVER DO THIS:**
