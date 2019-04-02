@@ -309,6 +309,64 @@ There are two ways of fixing this problem:
 
 
 ### Item 16: In public classes, use accessor methods, not public fields
+
+Making class fields public is a very bad idea. Such classes do not offer the benefits of encapsulation. You cannot change the representation without changing the API.
+
+```java
+  class Point {
+    public double x;
+    public double y;
+  }
+```
+
+Instead you should make the fields private and create gettes and setters for access and modification.
+
+```java
+  // Encapsulation of data by accessor methods and mutators
+  class Point {
+    private double x;
+    private double y;
+    public Point(double x, double y) {
+      this.x = x;
+      this.y = y;
+    }
+    public double getX() { return x; }
+    public double getY() { return y; }
+    public void setX(double x) { this.x = x; }
+    public void setY(double y) { this.y = y; }
+  }
+```
+
+If a class is package-private or is a private nested class, there is nothing inherently wrong with exposing its data fields—assuming they do an adequate job of describing the abstraction provided by the class.
+
+While it’s never a good idea for a public class to expose fields directly, it is less harmful if the fields are immutable. You can’t change the representation of such a class without changing its API, and you can’t take auxiliary actions when a field is read, but you can enforce invariants.
+
+```java
+// Public class with exposed immutable fields - questionable
+public final class Time {
+  private static final int HOURS_PER_DAY = 24;
+  private static final int MINUTES_PER_HOUR = 60;
+  public final int hour;
+  public final int minute;
+
+  public Time(int hour, int minute) {
+    if (hour < 0 || hour >= HOURS_PER_DAY) {
+      throw new IllegalArgumentException("Hour: " + hour);
+    }
+
+    if (minute < 0 || minute >= MINUTES_PER_HOUR) {
+      throw new IllegalArgumentException("Min: " + minute);
+    }
+      
+    this.hour = hour;
+    this.minute = minute;
+  }
+}
+```
+
+**Public classes should never expose mutable fields. It is less harmful, though still questionable, for public classes to expose immutable fields. It is, however, sometimes desirable for package-private or private nested classes to expose fields, whether mutable or immutable.**
+
+
 ### Item 17: Minimize mutability
 ### Item 18: Favor composition over inheritance
 ### Item 19: Design and document for inheritance or else prohibit it
