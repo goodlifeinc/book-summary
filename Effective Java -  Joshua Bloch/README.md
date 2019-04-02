@@ -368,6 +368,126 @@ public final class Time {
 
 
 ### Item 17: Minimize mutability
+
+An immutable class is simply a class whose instances cannot be modified.  Example of such classes are String, BigInteger, BigDecimal. Immutable classes  provide many advantages, and their only disadvantage is the potential for performance problems under certain circumstances.
+
+There are 5 rules to make a class immutable:
+
+1. **Don't provide methods that modify the object's state**
+2. **Ensure that the class cannot be extended** (final class ot static factory methods with private constructors)
+3. **Make all fields final**
+4. **Make all fields private**
+5. **Ensure exclusive access to any mutable components** - if your class has any fields that refer to mutable objects, ensure that clients of the class cannot obtain references to there objects.
+
+Example:
+
+```java
+  public final class Complex {
+    private final double re;
+    private final double im;
+
+    public Complex(double re, double im) {
+      this.re = re;
+      this.im = im;
+    }
+
+    public double realPart() {
+      return re;
+    }
+
+    public double imaginaryPart() {
+      return im;
+    }
+
+    public Complex plus(Complex c){
+      return new Complex(re + c.re, im + c.im);
+    }
+
+    public Complex minus(Complex c){
+      return new Complex(re - c.re, im - c.im);
+    }
+
+    public Complex times(Complex c){
+      return new Complex(re * c.re - im * c.im,
+                        re * c.re + im * c.im);
+    }
+
+    public Complex dividedBy(Complex c) {
+      double tmp = c.re * c.re + c.im * c.im;
+      return new Complex((re * c.re + im * c.im) / tmp, 
+                        (im * c.re - re * c.im) / tmp);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (o == this){
+        return true;
+      }
+
+      if (!(o instanceof Complex)){
+        return false;
+      }
+
+      Complex c = (Complex) o;
+
+      return Double.compare(c.re, re) == 0 && 
+            Double.compare(c.im, im) == 0;
+    }
+
+    @Override 
+    public int hashCode() {
+      return 31 * Double.hashCode(re) +
+                  Double.hashCode(im);
+    }
+
+    @Override public String toString() {
+      return "(" + re + " + " + im + "i)";
+    }
+  }
+```
+
+In this example we can see that the arithmetic operations create and return a new Complex instance rather than modifying this instance. Also the method names are prepositions (such as plus) rather than verbs (such as add). This emphasizes the fact that methods don’t change the values of the objects. An immutable object can be in exactly one state, the state in which it was created. 
+
+Immutable classes are inherently **thread-safe**; they require no synchronization. They cannot be corrupted by multiple threads accessing them concurrently. This is far and away the easiest approach to achieve thread safety. 
+
+Immutable classes should encourage clients to **reuse existing instances wherever possible**.
+One easy way to do this is to provide **public static final constants** for commonly used values. 
+
+```java
+  public static final Complex ZERO = new Complex(0, 0);
+  public static final Complex ONE = new Complex(1, 0);
+  public static final Complex I = new Complex(0, 1);
+```
+
+An immutable class can provide **static factories that cache frequently requested instances to avoid creating new instances** when existing ones would do. This causes clients to share instances instead of creating new ones, reducing memory footprint and garbage collection costs. 
+
+Opting for static factories in place of public constructors when designing a new class gives you the flexibility to add caching later, without modifying clients.
+
+The major **disadvantage** of immutable classes is that they require a separate object for each distinct value. Creating these objects can be costly, especially if they are large. 
+
+If we want to guarantee immutability, a class must not permit itself to be subclassed. We can make the class final, but there is another alternative. We can make all of its constructors private or package-private and add public static factories in place of the public constructors.
+
+```java
+  // Immutable class with static factories instead of constructors
+  public class Complex {
+    private final double re;
+    private final double im;
+
+    private Complex(double re, double im) {
+      this.re = re;
+      this.im = im;
+    }
+
+    public static Complex valueOf(double re, double im) {
+      return new Complex(re, im);
+    }
+  }
+```
+
+Some immutable classes have one or more nonfinal fields in which they cache the results of expensive computations the first time they are needed. If the same value is requested again, the cached value is returned, saving the cost of recalculation. This trick works precisely because the object is immutable, which guarantees that the computation would yield the same result if it were repeated. This technique, an example of lazy initialization, is also used by String.
+
+There are some classes for which immutability is impractical. If a class cannot be made immutable, limit its mutability as much as possible. Reducing the number of states in which an object can exist makes it easier to reason about the object and reduces the likelihood of errors. Therefore, make every field final unless there is a compelling reason to make it nonfinal.
+
 ### Item 18: Favor composition over inheritance
 ### Item 19: Design and document for inheritance or else prohibit it
 ### Item 20: Prefer interfaces to abstract classes
