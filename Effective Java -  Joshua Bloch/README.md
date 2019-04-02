@@ -267,6 +267,47 @@ Another way to create unnecessary objects is autoboxing. It allows you to mix pr
 
 ## Chapter 4. Classes and Interfaces
 ### Item 15: Minimize the accessibility of classes and members
+
+Information hiding decouples the components that comprise a system, allowing them to be developed, tested, optimized, understood and modified in isolation. (Encapsulation)
+
+There are 3 access modifiers - **private, protecred, public.**
+
+As a rule **ALWAYS MAKE EACH CLASS OR MEMBER AS INACCESSIBLE AS POSSIBLE.**
+For *top-level* classes(non nested) and interfaces there are 2 possible access levels: *public* and *package-private*.
+**If a top-level class or interface can be made package-private, it should be.** If you make a class public, you are obligated to support it forever to maintain compatibility.
+
+If a package-private top level class or interface is used by only one class *consider making it a private static nested class* of the sole class that uses it.
+
+For members there are 4 possible access level: **private**, **package-private**, **protected** and **public**.
+Rarely use the protected access modifier. It gives a huge increase in accessibility.
+
+If a method overrides a superclass method, it cannot have a more restrictive access level in the sublass than in the superclass.
+If a class implements an interface, all of the class methods that are in the interface must be declared public in the class.
+
+It is wrong for a class to have a public static final array field, or an accesor that returns such a field. That way client will be able to modify the array. So always ensure that objects references by public static final fields are immutable.
+
+```java
+  // Potential security hole
+  public static final Thing[] VALUES = { ... };
+```
+
+There are two ways of fixing this problem:
+
+1. You can make the public array private and add a public immutablle list.
+
+```java
+  private static final Thing[] PRIVATE_VALUES = { ... };
+  public static final List<Thing> VALUES = Collection.unmodifiableList(Array.asList(PRIVATE_VALUES));
+```
+2. You can make the public array private and a public method that returns a copy of a private array.
+```java
+  private static final Thing[] PRIVATE_VALUES = { ... };
+  public static final Thing[] values() {
+    return PRIVATE_VALUES.clone()
+  }
+```
+
+
 ### Item 16: In public classes, use accessor methods, not public fields
 ### Item 17: Minimize mutability
 ### Item 18: Favor composition over inheritance
