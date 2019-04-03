@@ -750,6 +750,13 @@ The program above is much slower than it should be because of the boxed primitiv
 
 
 ### Item 62: Avoid strings where other types are more appropriate
+
+Often when a piece of data comes into a program from a file, from the network, or from keyboard input, it is often in a string form. So there is a natural tendency to leave it that way, but this tendency is justified only if the data really is textual in nature.
+
+If the data is numeric, it should be translated into the appropriate numeric type, such as int, float, or BigInteger. If it’s the answer to a yes-or-no question, it should be translated into an appropriate enum type or a boolean.  More generally, if there’s an appropriate value type, whether primitive or object reference, you should use it; if there isn’t, you should write one. Strings are poor substitutes for enum types and aggregate types. 
+
+If an entity has multiple components, it is usually a bad idea to represent it as a single string. To access individual fields, you have to parse the string, which is slow, tedious, and error-prone. A better approach is simply to write a class to represent the aggregate, often a private static member class.
+
 ### Item 63: Beware the performance of string concatenation
 ### Item 64: Refer to objects by their interfaces
 ### Item 65: Prefer interfaces to reflection
