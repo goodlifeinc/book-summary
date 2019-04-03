@@ -301,6 +301,32 @@ A third common source of memory leaks is listeners and other callbacks. If you i
 ### Item 8: Avoid finalizers and cleaners
 ### Item 9: Prefer try-with-resources to try-finally
 
+There are many resources that must be closed manually by invoking a close method. Examples include InputStream,
+OutputStream, and java.sql.Connection.
+
+Historically, a try-finally statement was the best way to guarantee that a resource would be closed properly, even in the face of an exception or return, but it looks terrible when you add more than one resource. Instead of using try-finaly, use try-with-resources. This is the the best way to close a resource. To be usable with this construct, a resource must implement the AutoCloseable interface, which consists of a single void-returning close method, so if you write a class that represents a resource that must be closed, your class should implement **AutoCloseable**. 
+
+```java
+// try-with-resources on multiple resources 
+static void copy(String src, String dst) throws IOException {
+  try (InputStream in = new FileInputStream(src); OutputStream out = new FileOutputStream(dst)) {
+      byte[] buf = new byte[BUFFER_SIZE];
+      int n;
+      while ((n = in.read(buf)) >= 0)
+      out.write(buf, 0, n);
+  }
+}
+
+// try-with-resources with a catch clause
+static String firstLineOfFile(String path, String defaultVal) {
+  try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+    return br.readLine();
+  } catch (IOException e) {
+    return defaultVal;
+  }
+}
+```
+
 
 ## Chapter 3. Methods Common to All Objects
 ### Item 10: Obey the general contract when overriding equals
