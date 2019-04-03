@@ -665,15 +665,16 @@ The for-each loop provides compelling advantages over the traditional for loop i
 
 Unfortunately, there are three common situations where you can’t use foreach:
 
-• **Destructive filtering** - If you need to traverse a collection removing selected elements, then you need to use an explicit iterator so that you can call its remove method. You can often avoid explicit traversal by using Collection’s removeIf method, added in Java 8.
+- **Destructive filtering** - If you need to traverse a collection removing selected elements, then you need to use an explicit iterator so that you can call its remove method. You can often avoid explicit traversal by using Collection’s removeIf method, added in Java 8.
 
-• **Transforming** - If you need to traverse a list or array and replace some or all of the values of its elements, then you need the list iterator or array index in order to replace the value of an element.
+- **Transforming** - If you need to traverse a list or array and replace some or all of the values of its elements, then you need the list iterator or array index in order to replace the value of an element.
 
-• **Parallel iteration** - If you need to traverse multiple collections in parallel, then you need explicit control over the iterator or index variable so that all iterators or index variables can be advanced in lockstep.
+- **Parallel iteration** - If you need to traverse multiple collections in parallel, then you need explicit control over the iterator or index variable so that all iterators or index variables can be advanced in lockstep.
 
 If possible always use for-each loop instead of any other loop.
 
 ### Item 59: Know and use the libraries
+
 ### Item 60: Avoid float and double if exact answers are required
 
 Don’t use ```float``` or ```double``` for any calculations that require an exact answer (for example: monetary calculations - it is impossible to represent 0.1 as a ```float``` or ```double``` exactly). They are designed primarily for scientific and engineering calculations. Instead use ```BigDecimal```, ```int```, or ```long```.
@@ -686,6 +687,68 @@ If the quantities don’t exceed nine decimal digits, you can use ```int```; if 
 
 
 ### Item 61: Prefer primitive types to boxed primitives
+The boxed primitives corresponding to int, double, and boolean are Integer, Double, and Boolean.
+
+There are three major differences between primitives and boxed primitives:
+
+- **primitives have only their values, whereas boxed primitives have identities distinct from their values.** In other words, two boxed primitive instances can have the same value and different identities. 
+
+- **primitive types have only fully functional values, whereas each boxed primitive type has one nonfunctional value, which is null**, in addition to all the functional values of the corresponding primitive type. 
+
+- **primitives are more timeand space-efficient than boxed primitives**
+
+**Example 1:**
+```java
+  naturalOrder.compare(new Integer(42), new Integer(42)) 
+```
+In the example above both ```Integer``` instances represent the same value (42), so the value of this expression should be 0, but it’s 1, which indicates that the first ```Integer``` value is greater than the second.
+
+Evaluating the expression ```i < j``` causes the ```Integer``` instances referred to by ```i``` and ```j``` to be auto-unboxed (it extracts their primitive values). The evaluation proceeds to check if the first of the resulting int values is less than the second. But suppose it is not. Then the next test evaluates the expression ```i==j```, which performs an identity comparison on the two object references. **Applying the == operator to boxed primitives is almost always wrong.**
+
+Yout could fix the problem in the broken comparator by adding two local variables to store the primitive ```int``` values corresponding to the boxed ```Integer``` parameters, and performing all of the comparisons on these variables. 
+
+```java
+Comparator<Integer> naturalOrder = (iBoxed, jBoxed) -> {
+  int i = iBoxed
+  int j = jBoxed;
+
+  return i < j ? -1 : (i == j ? 0 : 1);
+};
+```
+
+
+**Example 2:**
+```java
+public class Unbelievable {
+  static Integer i;
+  
+  public static void main(String[] args) {
+    if (i == 42){
+      System.out.println("Unbelievable");
+    }
+  }
+}
+```
+
+The example above throws a ```NullPointerException``` when evaluating the expression ```i==42```. The problem is that ```i``` is an ```Integer```, not an ```int```, and like all nonconstant object reference fields, its initial value is ```null```. When the program evaluates the expression ```i==42```, it is comparing an ```Integer``` to an ```int```. 
+
+In nearly every case when you mix primitives and boxed primitives in an operation, the boxed primitive is auto-unboxed. If a ```null``` object reference is auto-unboxed, you get a ```NullPointerException```. 
+
+**Example 3:**  
+```java
+public static void main(String[] args) {
+  Long sum = 0L;
+  for (long i = 0; i < Integer.MAX_VALUE; i++) {
+    sum += i;
+  }
+  
+  System.out.println(sum);
+}
+```
+
+The program above is much slower than it should be because of the boxed primitive type ```Long```. The program compiles without error or warning, and the variable is repeatedly boxed and unboxed, causing the observed performance degradation.
+
+
 ### Item 62: Avoid strings where other types are more appropriate
 ### Item 63: Beware the performance of string concatenation
 ### Item 64: Refer to objects by their interfaces
