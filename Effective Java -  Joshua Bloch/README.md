@@ -758,6 +758,11 @@ If the data is numeric, it should be translated into the appropriate numeric typ
 If an entity has multiple components, it is usually a bad idea to represent it as a single string. To access individual fields, you have to parse the string, which is slow, tedious, and error-prone. A better approach is simply to write a class to represent the aggregate, often a private static member class.
 
 ### Item 63: Beware the performance of string concatenation
+
+Using the string concatenation operator repeatedly to concatenate n strings requires time quadratic in n. This is an unfortunate consequence of the fact that strings are immutable. When two strings are concatenated, the contents of both are copied.
+
+**Don’t use the string concatenation operator to combine more than a few strings** unless performance is irrelevant. Use StringBuilder’s append method instead. Alternatively, use a character array, or process the strings one at a time instead of combining them.
+
 ### Item 64: Refer to objects by their interfaces
 ### Item 65: Prefer interfaces to reflection
 ### Item 66: Use native methods judiciously
