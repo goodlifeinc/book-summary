@@ -602,41 +602,8 @@ There are some classes for which immutability is impractical. If a class cannot 
 
 ## Chapter 8. Methods
 ### Item 49: Check parameters for validity
-  Most methods and constructors have some restrictions on what values may be passed into their parameters. It is not uncommon that index values must be non-negative and object references must be non-null, so you should clearly document all such restrictions and enforce them with checks **at the beginning of the method body** (you should attempt to detect errors as soon as possible after they occur).
-
-The  ```Objects.requireNonNull ``` method is flexible and convenient, so there’s no reason to perform  ```null ``` checks manually. Nonpublic methods can check their parameters using assertions:
-
-  ```java
-  private static void sort(long a[], int offset, int length) {
-      assert a != null;
-      assert offset >= 0 && offset <= a.length;
-      assert length >= 0 && length <= a.length - offset;
-      ... // Do the computation
-  }
-  ```
-  
-  Each time you write a method or constructor, you should think about what restrictions exist on its parameters. You should document these restrictions and enforce them with explicit checks at the beginning of the method body.
-
 ### Item 50: Make defensive copies when needed
-
 ### Item 51: Design method signatures carefully
-- Choose method names carefully.
-
-- Avoid long parameter lists - Aim for four parameters or fewer.
-  * break the method up into multiple methods, each of which requires only a subset of the parameters.
-  * create helper classes to hold groups of parameters (Typically these are static member classes)
-  * adapt the Builder pattern from object construction to method invocation.
-
-- For parameter types, favor interfaces over classes - By using a class instead of an interface, you restrict your client to a particular implementation and force an unnecessary and potentially expensive copy operation if the input data happens to exist in some other form.
-
-- Prefer two-element enum types to boolean parameters - Enums make your code easier to read, write and easy to add more options later.
-  * Ex: 
-  ```java
-    public enum TemperatureScale { 
-      FAHRENHEIT, CELSIUS 
-    }
-  ```
-
 ### Item 52: Use overloading judiciously
 ### Item 53: Use varargs judiciously
 ### Item 54: Return empty collections or arrays, not nulls
