@@ -253,6 +253,51 @@ The problem is that it internally creates a ```Pattern``` instance for the regul
 Another way to create unnecessary objects is autoboxing. It allows you to mix primitive and boxed primitive types, boxing and unboxing automatically as needed. Autoboxing blurs but does not erase the distinction between primitive and boxed primitive types. **Always prefer primitives to boxed primitives, and watch out for unintentional autoboxing.**
 
 ### Item 7: Eliminate obsolete object references
+Memory leak example:
+
+```java
+  public class Stack {
+    ...
+    // Memory Leak
+    public Object pop() {
+      if (size == 0){
+        throw new EmptyStackException();
+      }
+
+      return elements[--size];
+    }
+    ...
+  }
+```
+
+If the stack grows and then shrinks, the objects that were poped off the stack will not be garbage collected, because the stack maintains obsolete references to these objects. An **obsolete reference is simply a reference that will never be dereferenced again**. In this case, any references outside of the “active portion” of the element array are obsolete. The active portion consists of the elements whose index is less than size. A fix for problem like this is to null out the references once they become obsolete.
+
+In the case of our Stack class, the reference to an item becomes obsolete as soon as it’s popped off the stack.
+
+```java
+public Object pop() {
+  if (size == 0){
+    throw new EmptyStackException();
+  }
+  
+  Object result = elements[--size];
+  elements[size] = null; // Eliminate obsolete reference
+
+  return result;
+} 
+```
+
+The best way to eliminate an obsolete reference is to let the variable that contained the reference fall out of scope. This occurs naturally if you define each variable in the narrowest possible scope. Whenever an element is freed, any object references contained in the element should be nulled out.
+
+Another common source of memory leaks is caches. Once you put an object reference into a cache, it’s easy to forget that it’s there and leave it in the cache long after it becomes irrelevant. 
+
+Some solutions: 
+ - If you implement a cache for which an entry is relevant exactly so long as there are references to its key outside of the cache, represent the cache as a **WeakHashMap**. Entries will be removed automatically after they become obsolete. 
+ - the useful lifetime of a cache entry is less well defined, with entries becoming less valuable over time. Under these circumstances, the cache should occasionally be cleansed of entries that have fallen into disuse. This can be done by a background thread (perhaps a ScheduledThreadPoolExecutor) or as a side effect of adding new entries to the cache. 
+
+A third common source of memory leaks is listeners and other callbacks. If you implement an API where clients register callbacks but don’t deregister them explicitly, they will accumulate. One way to ensure that callbacks are garbage collected promptly is to store only weak references to them, for instance, by storing them only as keys in a WeakHashMap.
+
+
 ### Item 8: Avoid finalizers and cleaners
 ### Item 9: Prefer try-with-resources to try-finally
 
