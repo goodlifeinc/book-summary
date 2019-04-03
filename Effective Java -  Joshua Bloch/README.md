@@ -10,27 +10,26 @@ Static factory method is simply a static method that returns an instance of the 
 **ADVANTAGES**
 - **unlike constructors, static factory methods have names**
   
-  It is better to use static factory methods when a class seems to require multiple constructors with the same signature. Then we replace the constructors with static factory methods and carefully chosen names to highlight their differences. Using constructors with the same parameters, but in different order can cause some serious problems. The user of the API can end up calling the wrong constructor by mistake.
+  When a class seems to require multiple constructors with the same signature we better use static factory methods with carefully chosen names to highlight their differences. Using constructors with the same parameters, but in different order can cause some serious problems. The user of the API can end up calling the wrong constructor by mistake.
 
 - **unlike constructors, static factory methods are not required to create a new object each time they’re invoked**
   
-  This allows immutable classes to use preconstructed instances, or to cache instances as they’re constructed, and dispense them repeatedly to avoid creating unnecessary duplicate objects. The ```Boolean.valueOf(boolean)``` never creates an object. This ability, to return the same object from repeated invocations allows classes to maintain strict control over what instances exist at any time. Classes that do this are said to be **instance controlled**.
+  This allows **immutable classes** to use *preconstructed instances*, or to *cache instances as they’re constructed*, and dispense them repeatedly to avoid creating unnecessary duplicate objects. The ```Boolean.valueOf(boolean)``` never creates an object. The ability to return the same object from repeated invocations allows classes to maintain strict control over what instances exist at any time. Classes that do this are said to be **instance controlled**.
   
   Instance controll allows:
-  * a class to guarantee that it is a singleton or noninstantiable 
-  * an immutable value class to make the guarantee that no two equal instances exist: ```a.equals(b)``` if and only if ```a==b```
+  * a class to guarantee that it is a *singleton* or *noninstantiable*. 
+  * an immutable value class to make the guarantee that no two equal instances exist: ```a.equals(b)``` if and only if ```a==b```(Enum types provide this guarantee).
 
 - **unlike constructors, static factory methods can return an object of any subtype of their return type**
 
   This gives you great flexibility in choosing the class of the returned object.
-  
-  One application of this flexibility is that an API can return objects without making their classes public. Hiding implementation classes in this fashion leads to a very compact API. This technique lends itself to interface-based frameworks, where interfaces provide natural return types for static factory methods.
+  An API can return objects without making their classes public. Hiding implementation classes in this fashion leads to a very compact API. This technique lends itself to interface-based frameworks, where interfaces provide natural return types for static factory methods.
 
 - **the class of the returned object can vary from call to call as a function of the input parameters**
   
-  Any subtype of the declared return type is permissible. The EnumSet class has no public constructors, only static factories. In the OpenJDK implementation, they return an instance of one of two subclasses, depending on the size of the underlying enum type: if it has sixty-four or fewer elements, as most enum types do, the static factories return a RegularEnumSet instance, which is backed by a single long; if the enum type has sixty-five or more elements, the factories return a JumboEnumSet instance, backed by a long array.
+  Any subtype of the declared return type is permissible. The ```EnumSet``` class has no public constructors, only static factories. In the OpenJDK implementation, they return an instance of one of two subclasses, depending on the size of the underlying enum type: if it has sixty-four or fewer elements, as most enum types do, the static factories return a ```RegularEnumSet``` instance, which is backed by a **single ```long```**; if the enum type has sixty-five or more elements, the factories return a ```JumboEnumSet``` instance, backed by a **```long``` array**.
   
-  Clients neither know nor care about the class of the object they get back from the factory; they care only that it is some subclass of EnumSet.
+  Clients neither know nor care about the class of the object they get back from the factory;, they care only that it is some subclass of ```EnumSet```.
 
 - **the class of the returned object need not exist when the class containing the method is written**
 
