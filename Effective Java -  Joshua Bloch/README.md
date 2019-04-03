@@ -646,6 +646,19 @@ The  ```Objects.requireNonNull ``` method is flexible and convenient, so there�
 
 ## Chapter 9. General Programming
 ### Item 57: Minimize the scope of local variables
+
+By minimizing the scope of local variables, you increase the readability and maintainability of your code and reduce the likelihood of error.
+
+Techniques for minimazing the scope of a local variable:
+
+- **Declare variable where it is first used** - if you declare all the variables at the head of the block, the reader might not remember the variables type or ilitial value. The scope of a local variable extends from the point where it is declared to the end of the enclosing block. If a variable is declared outside of the block in which it is used, it remains visible after the program exits that block and if it is used accidentally before or after its region of intended use, the consequinces can be desastrous.
+
+- **If a variable is initialized to an expression whose evaluation can throw a checked exception, the variable must be initialized inside a try block**. If the value must be used outside of the try block, then it must be declared before the try block, where it cannot yet be “sensibly initialized.” 
+
+- **Prefer for loops to while loops** - for loops in both forms: traditional and for-each, allows you to declare loop variables, limiting their scope to the exact region where they are needed.
+
+- **Keep methods small and focused** - if you combine two activities in the same method, local variables relevant to one activity may be in the scope of the code performing the other activity. To prevent this from happening, simply separate the method into two: one for each activity.
+
 ### Item 58: Prefer for-each loops to traditional for loops
 ### Item 59: Know and use the libraries
 ### Item 60: Avoid float and double if exact answers are required
