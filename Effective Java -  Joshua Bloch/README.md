@@ -675,6 +675,16 @@ If possible always use for-each loop instead of any other loop.
 
 ### Item 59: Know and use the libraries
 ### Item 60: Avoid float and double if exact answers are required
+
+Don’t use ```float``` or ```double``` for any calculations that require an exact answer (for example: monetary calculations - it is impossible to represent 0.1 as a ```float``` or ```double``` exactly). They are designed primarily for scientific and engineering calculations. Instead use ```BigDecimal```, ```int```, or ```long```.
+
+There are two **disadvantages** to using ```BigDecimal```: it’s a lot less convenient than using a primitive arithmetic type, and it’s a lot slower.
+
+An alternative to using ```BigDecimal``` is to use ```int``` or ```long```, depending on the amounts involved, and to keep track of the decimal point yourself.
+
+If the quantities don’t exceed nine decimal digits, you can use ```int```; if they don’t exceed eighteen digits, you can use ```long```. If the quantities might exceed eighteen digits, use ```BigDecimal```.
+
+
 ### Item 61: Prefer primitive types to boxed primitives
 ### Item 62: Avoid strings where other types are more appropriate
 ### Item 63: Beware the performance of string concatenation
