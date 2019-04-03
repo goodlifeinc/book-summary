@@ -660,6 +660,19 @@ Techniques for minimazing the scope of a local variable:
 - **Keep methods small and focused** - if you combine two activities in the same method, local variables relevant to one activity may be in the scope of the code performing the other activity. To prevent this from happening, simply separate the method into two: one for each activity.
 
 ### Item 58: Prefer for-each loops to traditional for loops
+
+The for-each loop provides compelling advantages over the traditional for loop in clarity, flexibility, and bug prevention, with no performance penalty. The for-each loop gets rid of the clutter and the opportunity for error by hiding the iterator or index variable.
+
+Unfortunately, there are three common situations where you can’t use foreach:
+
+• **Destructive filtering** - If you need to traverse a collection removing selected elements, then you need to use an explicit iterator so that you can call its remove method. You can often avoid explicit traversal by using Collection’s removeIf method, added in Java 8.
+
+• **Transforming** - If you need to traverse a list or array and replace some or all of the values of its elements, then you need the list iterator or array index in order to replace the value of an element.
+
+• **Parallel iteration** - If you need to traverse multiple collections in parallel, then you need explicit control over the iterator or index variable so that all iterators or index variables can be advanced in lockstep.
+
+If possible always use for-each loop instead of any other loop.
+
 ### Item 59: Know and use the libraries
 ### Item 60: Avoid float and double if exact answers are required
 ### Item 61: Prefer primitive types to boxed primitives
