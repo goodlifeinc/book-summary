@@ -14,11 +14,11 @@ Static factory method is simply a static method that returns an instance of the 
 
 - **unlike constructors, static factory methods are not required to create a new object each time they’re invoked**
   
-  This allows **immutable classes** to use *preconstructed instances*, or to *cache instances as they’re constructed*, and dispense them repeatedly to avoid creating unnecessary duplicate objects. The ```Boolean.valueOf(boolean)``` never creates an object. The ability to return the same object from repeated invocations allows classes to maintain strict control over what instances exist at any time. Classes that do this are said to be **instance controlled**.
+  This allows **immutable classes** to use *preconstructed instances*, or to *cache instances as they’re constructed*, and dispense them repeatedly to avoid creating unnecessary duplicate objects. The `Boolean.valueOf(boolean)` never creates an object. The ability to return the same object from repeated invocations allows classes to maintain strict control over what instances exist at any time. Classes that do this are said to be **instance controlled**.
   
   Instance controll allows:
   * a class to guarantee that it is a *singleton* or *noninstantiable*. 
-  * an immutable value class to make the guarantee that no two equal instances exist: ```a.equals(b)``` if and only if ```a==b```(Enum types provide this guarantee).
+  * an immutable value class to make the guarantee that no two equal instances exist: `a.equals(b)` if and only if `a==b`(Enum types provide this guarantee).
 
 - **unlike constructors, static factory methods can return an object of any subtype of their return type**
 
@@ -27,9 +27,9 @@ Static factory method is simply a static method that returns an instance of the 
 
 - **the class of the returned object can vary from call to call as a function of the input parameters**
   
-  Any subtype of the declared return type is permissible. The ```EnumSet``` class has no public constructors, only static factories. In the OpenJDK implementation, they return an instance of one of two subclasses, depending on the size of the underlying enum type: if it has sixty-four or fewer elements, as most enum types do, the static factories return a ```RegularEnumSet``` instance, which is backed by a **single ```long```**; if the enum type has sixty-five or more elements, the factories return a ```JumboEnumSet``` instance, backed by a **```long``` array**.
+  Any subtype of the declared return type is permissible. The `EnumSet` class has no public constructors, only static factories. In the OpenJDK implementation, they return an instance of one of two subclasses, depending on the size of the underlying enum type: if it has sixty-four or fewer elements, as most enum types do, the static factories return a `RegularEnumSet` instance, which is backed by a **single `long`**; if the enum type has sixty-five or more elements, the factories return a ```JumboEnumSet``` instance, backed by a `long` array
   
-  Clients neither know nor care about the class of the object they get back from the factory;, they care only that it is some subclass of ```EnumSet```.
+  Clients neither know nor care about the class of the object they get back from the factory;, they care only that it is some subclass of `EnumSet`.
 
 - **the class of the returned object need not exist when the class containing the method is written**
 
@@ -135,7 +135,7 @@ Useful video: [Item 3 - 5](https://www.youtube.com/watch?v=kVuOveApdCk)
 
 A singleton is simply a class that is *instantiated exactly once.*
 
-Making a class a singleton can make it difficult to test its clients because it’s impossible to substitute a mock implementation for a singleton unless it implements an interface that serves as its type. 
+Making a class a singleton can make it **difficult to test** its clients because it’s impossible to substitute a mock implementation for a singleton unless it implements an interface that serves as its type. 
 
 There are two common ways to implement singletons:
 
@@ -160,6 +160,8 @@ There are two common ways to implement singletons:
   }
 ```
 
+One advantage of the method above is that it gives you the flexibility to change your mind about whether the class is a singleton or not without changing the API. The factory method returns the sole instance, but it could be modified to return, say, a separate instance for each thread that invokes it.
+
 A third way to implement a singleton is to declare a single-element enum.
 ```java
   // Enum singleton - the preferred approach
@@ -169,12 +171,11 @@ A third way to implement a singleton is to declare a single-element enum.
   }
 ```
 
-**A single-element enum type is often the best way to implement a singleton.** Note that you can’t use this approach if your singleton must extend a superclass other than ```Enum```.
-
+**A single-element enum type is often the best way to implement a singleton.** Note that you can’t use this approach if your singleton must extend a superclass other than `Enum`.
 
 ### Item 4: Enforce noninstantiability with a private constructor
 
-If you want to make a class noninstantiable, make the default constructor ```private```. Do not make the class abstract. The class can be subclassed and the subclass instantiated. It also misleads the user into thinking the class was designed for inheritance.
+If you want to make a class noninstantiable, **make the default constructor `private`**. Do NOT make the class abstract. The class can be subclassed and the subclass instantiated. It also misleads the user into thinking the class was designed for inheritance.
 
 ```java
   // Noninstantiable utility class
@@ -186,15 +187,14 @@ If you want to make a class noninstantiable, make the default constructor ```pri
   }
 ```
 
-The ```AssertionError``` isn’t strictly required, but it provides insurance in case the constructor is accidentally invoked from within the class. It guarantees the class will never be instantiated under any circumstances.
+The `AssertionError` isn’t strictly required, but it provides insurance in case the constructor is accidentally invoked from within the class. It guarantees the class will never be instantiated under any circumstances.
 
 As a side effect, this idiom also prevents the class from being subclassed. All constructors must invoke a superclass constructor, explicitly or implicitly, and a subclass would have no accessible superclass constructor to invoke.
 
 ### Item 5: Prefer dependency injection to hardwiring resources
 **Static utility classes and singletons are inappropriate for classes whose behavior is parameterized by an underlying resource.**
 
-What is required is the ability to support multiple instances of the class, each of which uses the resource desired by the client. For example we can pass the resource into the constructor when creating a new instance. This is one form of dependency injection: the dictionary is a
-dependency of the spell checker and is injected into the spell checker when it is created.
+What is required is the ability to support multiple instances of the class, each of which uses the resource desired by the client. For example we can pass the resource into the constructor when creating a new instance. This is one form of dependency injection: the dictionary is a dependency of the spell checker and is injected into the spell checker when it is created.
 
 ```java
   public class SpellChecker {
@@ -210,24 +210,23 @@ dependency of the spell checker and is injected into the spell checker when it i
   }
 ```
 
-Remember: do not use a singleton or static utility class to implement a class that depends on one or more underlying resources whose behavior
-affects that of the class, and do not have the class create these resources directly. Instead, pass the resources, or factories to create them, into the constructor (or static factory or builder).
+Remember: **don't use a singleton or static utility class to implement a class that depends on one or more underlying resources whose behavior affects that of the class, and do not have the class create these resources directly. Instead, pass the resources, or factories to create them, into the constructor (or static factory or builder)**.
 
 ### Item 6: Avoid creating unnecessary objects
 
-Instead of creating new objects which are equivalen, reuse a single object. It makes it more understandable and faster. An object can always be reused if it is immutable.
+Instead of creating new objects which are equivalen, reuse a single object. It makes it more understandable and faster. **An object can always be reused if it is immutable.**
 
 **NEVER DO THIS:**
-```String s = new String("bikini");```
+`String s = new String("bikini");`
 
-The statement creates a ```new String``` instance each time it is executed, and none of those object creations is necessary.
+The statement creates a `new String` instance each time it is executed, and none of those object creations is necessary.
 
 **Instead DO THIS:**
-```String s = "bikini";```
+`String s = "bikini";`
 
-This version uses a single ```String``` instance, rather than creating a new one each time it is executed.
+This version uses a single `String` instance, rather than creating a new one each time it is executed.
 
-You can avoid creating unnecessary objects by using **static factory method** in preference to constructors on immutable classes that provide both. That way you will not create a new object each time, but you can reuse already existing one. An example of this is the ```Boolean.valueOf(String)```. It does not creates new objects every time it is invoked, but returns already existing values. In addition to reusing immutable objects, you can also reuse mutable objects if you know they won’t be modified.
+You can avoid creating unnecessary objects by using **static factory method** in preference to constructors on immutable classes that provide both. That way you will not create a new object each time, but you can reuse already existing one. An example of this is the `Boolean.valueOf(String)`. It does not creates new objects every time it is invoked, but returns already existing values. In addition to reusing immutable objects, **you can also reuse mutable objects if you know they won’t be modified.**
 
 If you’re going to need such an “expensive object” repeatedly, it may be advisable to cache it for reuse.
 
@@ -237,7 +236,7 @@ If you’re going to need such an “expensive object” repeatedly, it may be a
     return s.matches("^(?=.)M*(C[MD]|D?C{0,3})" + "(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
   }
 ```
-The problem is that it internally creates a ```Pattern``` instance for the regular expression and uses it only once, after which it becomes eligible for garbage collection. To improve the performance, explicitly compile the regular expression into a ```Pattern``` instance (which is immutable) as part of class initialization, cache it, and reuse the same instance for every invocation of the ```isRomanNumeral``` method.
+The problem is that it internally creates a `Pattern` instance for the regular expression and uses it only once, after which it becomes eligible for garbage collection. To improve the performance, explicitly compile the regular expression into a `Pattern` instance (which is immutable) as part of class initialization, cache it, and reuse the same instance for every invocation of the `isRomanNumeral` method.
 
 ```java
   public class RomanNumerals {
@@ -298,12 +297,37 @@ A third common source of memory leaks is listeners and other callbacks. If you i
 
 
 ### Item 8: Avoid finalizers and cleaners
+
+Finalizers and cleaners are unpredictable, often dangerous, slow and generally unnecessary.
+
+In Java, the garbage collector reclaims the storage associated with an object when it becomes unreachable and try-with-resources or try-finally block is used to reclaim other nonmemory resources. 
+
+One shortcoming of finalizers and cleaners is that there is no guarantee they’ll be executed promptly. It can take arbitrarily long between the time that an object becomes unreachable and the time its finalizer or cleaner runs. **So you should never do anything time-critical in a finalizer or cleaner.**
+
+**Never depend on a finalizer or cleaner to close files because open file descriptors are a limited resource**. If many files are left open as a result of the system’s tardiness in running finalizers or cleaners, a program may fail because it can no longer open files.
+
+Providing a finalizer for a class can arbitrarily delay reclamation of its instances. Cleaners are a bit better than finalizers in this regard because class authors have control over their own cleaner threads, but cleaners still run in the background, under the control of the garbage collector, so there can be no guarantee of prompt cleaning.
+
+**Don’t use the methods System.gc and System.runFinalization.** They may increase the odds of finalizers or cleaners getting executed, but they don’t guarantee it.
+
+Another problem with finalizers is that **an uncaught exception thrown during finalization is ignored**, and finalization of that object terminates. **Uncaught exceptions can leave other objects in a corrupt state**. If another thread attempts to use such a corrupted object, arbitrary nondeterministic behavior may result. Normally, an uncaught exception will terminate the thread and print a stack trace, but not if it occurs in a finalizer - it won’t even print a warning. Cleaners do not have this problem because a library using a cleaner has control over its thread.
+
+Instead of writing a finalizer or cleaner for a class whose objects encapsulate resources that require termination, such as files or threads, just **have your class implement AutoCloseable**, and require its clients to invoke the close method on each instance when it is no longer needed, typically using try-with-resources to ensure termination even in the face of exceptions.
+
+One detail worth mentioning is that the instance must keep track of whether it has been closed: the close method must
+record in a field that the object is no longer valid, and other methods must check this field and throw an `IllegalStateException` if they are called after the object has been closed.
+
+Cleaners and finalizers have perhaps two legitimate uses:
+- One is to act as a safety net in case the owner of a resource neglects to call its close method. While there’s no guarantee that the cleaner or finalizer will run promptly (or at all), it is better to free the resource late than never if the client fails to do so. If you’re considering writing such a safety-net finalizer, think long and hard about whether the protection is worth the cost. Some Java library classes, such as `FileInputStream`, `FileOutputStream`, `ThreadPoolExecutor`, and `java.sql.Connection`, have finalizers that serve as safety nets.
+
+- A second legitimate use of cleaners concerns objects with native peers. A native peer is a native (non-Java) object to which a normal object delegates via native methods. Because a native peer is not a normal object, the garbage collector doesn’t know about it and can’t reclaim it when its Java peer is reclaimed. A cleaner or finalizer may be an appropriate vehicle for this task, assuming the performance is acceptable and the native peer holds no critical resources. If the performance is unacceptable or the native peer holds resources that must be reclaimed promptly, the class should have a close method, as described earlier.
+
 ### Item 9: Prefer try-with-resources to try-finally
 
-There are many resources that must be closed manually by invoking a close method. Examples include InputStream,
-OutputStream, and java.sql.Connection.
+There are many resources that must be closed manually by invoking a close method. Examples include `InputStream`,
+`OutputStream`, and `java.sql.Connection`.
 
-Historically, a try-finally statement was the best way to guarantee that a resource would be closed properly, even in the face of an exception or return, but it looks terrible when you add more than one resource. Instead of using try-finaly, use try-with-resources. This is the the best way to close a resource. To be usable with this construct, a resource must implement the AutoCloseable interface, which consists of a single void-returning close method, so if you write a class that represents a resource that must be closed, your class should implement **AutoCloseable**. 
+A try-finally statement was the best way to guarantee that a resource would be closed properly, even in the face of an exception or return, but it looks terrible when you add more than one resource. **Instead of using try-finaly, use try-with-resources.** This is the the best way to close a resource. To be usable with this construct, a resource must implement the `AutoCloseable` interface, which consists of a single void-returning close method, so if you write a class that represents a resource that must be closed, your class should implement **AutoCloseable**. 
 
 ```java
 // try-with-resources on multiple resources 
@@ -326,19 +350,20 @@ static String firstLineOfFile(String path, String defaultVal) {
 }
 ```
 
-
 ## Chapter 3. Methods Common to All Objects
 ### Item 10: Obey the general contract when overriding equals
+
 ### Item 11: Always override hashCode when you override equals
+
 ### Item 12: Always override toString
+
 ### Item 13: Override clone judiciously
 ### Item 14: Consider implementing Comparable
 
 
 ## Chapter 4. Classes and Interfaces
 ### Item 15: Minimize the accessibility of classes and members
-
-Information hiding decouples the components that comprise a system, allowing them to be developed, tested, optimized, understood and modified in isolation. (Encapsulation)
+(Encapsulation) Information hiding decouples the components that comprise a system, allowing them to be developed, tested, optimized, understood and modified in isolation. This speeds up system development because components can be developed in parallel, eases the burden of maintenance because components can be understood more quickly and debugged or replaced with little fear of harming other components. It also increases software reuse.
 
 There are 3 access modifiers - **private, protecred, public.**
 
@@ -346,13 +371,17 @@ As a rule **ALWAYS MAKE EACH CLASS OR MEMBER AS INACCESSIBLE AS POSSIBLE.**
 For *top-level* classes(non nested) and interfaces there are 2 possible access levels: *public* and *package-private*.
 **If a top-level class or interface can be made package-private, it should be.** If you make a class public, you are obligated to support it forever to maintain compatibility.
 
-If a package-private top level class or interface is used by only one class *consider making it a private static nested class* of the sole class that uses it.
+If a package-private top level class or interface is used by only one class *consider making it a private static nested class* of the sole class that uses it.  
 
 For members there are 4 possible access level: **private**, **package-private**, **protected** and **public**.
-Rarely use the protected access modifier. It gives a huge increase in accessibility.
+
+The protected access modifier gives a huge increase in accessibility and it should be rarely used.
 
 If a method overrides a superclass method, it cannot have a more restrictive access level in the sublass than in the superclass.
+
 If a class implements an interface, all of the class methods that are in the interface must be declared public in the class.
+
+**Instance fields of public classes should rarely be public**. If an instance field is nonfinal or is a reference to a mutable object, then by making it public, you give up the ability to limit the values that can be stored in the field.
 
 It is wrong for a class to have a public static final array field, or an accesor that returns such a field. That way client will be able to modify the array. So always ensure that objects references by public static final fields are immutable.
 
@@ -377,35 +406,11 @@ There are two ways of fixing this problem:
   }
 ```
 
-
 ### Item 16: In public classes, use accessor methods, not public fields
 
 Making class fields public is a very bad idea. Such classes do not offer the benefits of encapsulation. You cannot change the representation without changing the API.
 
-```java
-  class Point {
-    public double x;
-    public double y;
-  }
-```
-
 Instead you should make the fields private and create gettes and setters for access and modification.
-
-```java
-  // Encapsulation of data by accessor methods and mutators
-  class Point {
-    private double x;
-    private double y;
-    public Point(double x, double y) {
-      this.x = x;
-      this.y = y;
-    }
-    public double getX() { return x; }
-    public double getY() { return y; }
-    public void setX(double x) { this.x = x; }
-    public void setY(double y) { this.y = y; }
-  }
-```
 
 If a class is package-private or is a private nested class, there is nothing inherently wrong with exposing its data fields—assuming they do an adequate job of describing the abstraction provided by the class.
 
@@ -436,10 +441,9 @@ public final class Time {
 
 **Public classes should never expose mutable fields. It is less harmful, though still questionable, for public classes to expose immutable fields. It is, however, sometimes desirable for package-private or private nested classes to expose fields, whether mutable or immutable.**
 
-
 ### Item 17: Minimize mutability
 
-An immutable class is simply a class whose instances cannot be modified.  Example of such classes are String, BigInteger, BigDecimal. Immutable classes  provide many advantages, and their only disadvantage is the potential for performance problems under certain circumstances.
+An immutable class is simply a class whose instances cannot be modified. Example of such classes are `String`, `BigInteger`, `BigDecimal`. Immutable classes  provide many advantages, and their only disadvantage is the potential for performance problems under certain circumstances.
 
 There are 5 rules to make a class immutable:
 
