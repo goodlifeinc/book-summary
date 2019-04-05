@@ -353,9 +353,25 @@ static String firstLineOfFile(String path, String defaultVal) {
 ## Chapter 3. Methods Common to All Objects
 ### Item 10: Obey the general contract when overriding equals
 
+
+
 ### Item 11: Always override hashCode when you override equals
 
 ### Item 12: Always override toString
+
+Providing a good `toString` implementation makes your class much more pleasant to use and makes systems using the class easier to debug. 
+
+**The returned `String` from `toString` method should be a concise but informative representation that is easy for a person to read and it is recommended that all subclasses override it.** The `toString` method should return all of the interesting information contained in the object. It is impractical if the object is large or if it contains state that is not conducive to `String` representation. Ideally, the `String` should be self-explanatory. 
+
+One important decision you’ll have to make when implementing a `toString` method is whether to specify the format of the return value in the documentation. 
+
+- The advantage of specifying the format is that it serves as a standard, unambiguous, human-readable representation of the object. This representation can be used for input and output and in persistent human-readable data objects, such as CSV files. If you specify the format, it’s usually a good idea to provide a matching static factory or constructor so programmers can easily translate back and forth between the object and its string representation. 
+
+- The disadvantage of specifying the format of the `toString` return value is that once you’ve specified it, you’re stuck with it for life, assuming your class is widely used. Programmers will write code to parse the representation, to generate it, and to embed it into persistent data. If you change the representation in a future release, you’ll break their code and data, and they will yowl. By choosing not to specify a format, you preserve the flexibility to add information or improve the format in a subsequent release.
+
+Whether or not you decide to specify the format, you should clearly document your intentions. 
+
+It makes no sense to write a `toString` method in a static utility class. Nor should you write a `toString` method in most enum types because Java provides a perfectly good one for you. You should, however, write a `toString` method in any abstract class whose subclasses share a common string representation
 
 ### Item 13: Override clone judiciously
 ### Item 14: Consider implementing Comparable
