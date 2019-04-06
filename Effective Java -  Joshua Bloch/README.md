@@ -352,11 +352,7 @@ static String firstLineOfFile(String path, String defaultVal) {
 
 ## Chapter 3. Methods Common to All Objects
 ### Item 10: Obey the general contract when overriding equals
-
-
-
 ### Item 11: Always override hashCode when you override equals
-
 ### Item 12: Always override toString
 
 Providing a good `toString` implementation makes your class much more pleasant to use and makes systems using the class easier to debug. 
@@ -579,6 +575,17 @@ Some immutable classes have one or more nonfinal fields in which they cache the 
 There are some classes for which immutability is impractical. If a class cannot be made immutable, limit its mutability as much as possible. Reducing the number of states in which an object can exist makes it easier to reason about the object and reduces the likelihood of errors. Therefore, make every field final unless there is a compelling reason to make it nonfinal.
 
 ### Item 18: Favor composition over inheritance
+
+**Inheritance violates encapsulation, because a sublass depends on the implementational details of its superclass to function properly and if the superclass's implementation change in a new release, the sublass may break even though its code has not been touched. So our sublass must evolve in tandem with its superclass.**
+
+If the superclass acquires a new method in a subsequent release and you have the bad luck to have given the subclass a method with the same signature and a different return type, your subclass will no longer compile.
+
+**Instead of extending an existing class use composition: give your new class a private field that references an instance of the existing class** (existing class becomes a component of the new one).
+
+Each instance method in the new class invokes the corresponding method on the contained instance of the existing class and returns the results. This is known as forwarding, and the methods in the new class are known as forwarding methods. The resulting class will be rock solid, with no dependencies on the implementation details of the existing class. Even adding new methods to the existing class will have no impact on the new class. 
+
+Inheritance is appropriate only in circumstances where the subclass really is a subtype of the superclass. In other words, a class B should extend a class A only if an “is-a” relationship exists between the two classes. I
+
 ### Item 19: Design and document for inheritance or else prohibit it
 ### Item 20: Prefer interfaces to abstract classes
 ### Item 21: Design interfaces for posterity
