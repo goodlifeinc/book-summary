@@ -590,6 +590,44 @@ Inheritance is appropriate only in circumstances where the subclass really is a 
 ### Item 20: Prefer interfaces to abstract classes 
 ### Item 21: Design interfaces for posterity
 
+### Item 22: Use interfaces only to define types
+
+When a class implements an interface, the interface serves as a type that can be used to refer to instances of the class. That a class implements an interface should therefore say something about what a client can do with instances of the class. 
+
+**Interfaces should be used only to define types. They should not be used merely to export constants.**
+
+Constant interface (interface that contains no methods only static final fields, each exporting a constant)
+
+```java
+  // Constant interface antipattern - DO NOT USE!
+  public interface PhysicalConstants {
+    // Avogadro's number (1/mol)
+    static final double AVOGADROS_NUMBER = 6.022_140_857e23;
+    // Boltzmann constant (J/K)
+    static final double BOLTZMANN_CONSTANT = 1.380_648_52e-23;
+    // Mass of the electron (kg)
+    static final double ELECTRON_MASS = 9.109_383_56e-31;
+  }
+```
+
+If in a future release the class is modified so that it no longer needs to use the constants, it still must implement the interface to ensure binary compatibility. If a nonfinal class implements a constant interface, all of its subclasses will have their namespaces polluted by the constants in the interface.
+
+If you want to export constants, there are several reasonable choices.
+If the constants are strongly tied to an existing class or interface, you should add them to the class or interface. If the constants are best viewed as members of an enumerated type, you should export them with an enum type. Otherwise, you should export the constants with a noninstantiable utility class.
+
+```java
+  // Constant utility class
+  package com.effectivejava.science;
+
+  public class PhysicalConstants {
+    private PhysicalConstants() { } // Prevents instantiation
+
+    public static final double AVOGADROS_NUMBER = 6.022_140_857e23;
+    public static final double BOLTZMANN_CONST = 1.380_648_52e-23;
+    public static final double ELECTRON_MASS = 9.109_383_56e-31;
+  }
+```
+
 ### Item 23: Prefer class hierarchies to tagged classes
 
 Tagged class is a class whose instances come in two or more flavors and contain a tag field indicating the flavor of the instance. For example:
