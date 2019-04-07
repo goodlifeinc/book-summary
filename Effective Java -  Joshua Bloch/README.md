@@ -587,12 +587,16 @@ Each instance method in the new class invokes the corresponding method on the co
 Inheritance is appropriate only in circumstances where the subclass really is a subtype of the superclass. In other words, a class B should extend a class A only if an “is-a” relationship exists between the two classes. I
 
 ### Item 19: Design and document for inheritance or else prohibit it
-### Item 20: Prefer interfaces to abstract classes
+### Item 20: Prefer interfaces to abstract classes 
 ### Item 21: Design interfaces for posterity
-### Item 22: Use interfaces only to define types
-### Item 23: Prefer class hierarchies to tagged classes
-### Item 24: Favor static member classes over nonstatic
-### Item 25: Limit source files to a single top-level class
+
+**The default method construct was added to allow the addition of methods to existing interfaces.** The declaration for a default method includes a default implementation that is used by all classes that implement the interface but do not implement the default method.
+
+While the addition of default methods makes it possible to add methods to an existing interface, there is no guarantee that these methods will work in all preexisting implementations. 
+
+Using default methods to add new methods to existing interfaces should be avoided unless the need is critical, in which case you should think long and hard about whether an existing interface implementation might be broken by your default method implementation. Default methods are, however, extremely useful for providing standard method implementations when an interface is created, to ease the task of implementing the interface.
+
+If an interface contains a minor flaw, it may irritate its users forever, if an interface is severely deficient, it may doom the API that contains it.
 
 
 ## Chapter 5. Generics
