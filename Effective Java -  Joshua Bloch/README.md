@@ -590,6 +590,113 @@ Inheritance is appropriate only in circumstances where the subclass really is a 
 ### Item 20: Prefer interfaces to abstract classes 
 ### Item 21: Design interfaces for posterity
 
+### Item 23: Prefer class hierarchies to tagged classes
+
+Tagged class is a class whose instances come in two or more flavors and contain a tag field indicating the flavor of the instance. For example:
+
+```java
+// Tagged class - vastly inferior to a class hierarchy!
+ class Figure {
+    enum Shape { RECTANGLE, CIRCLE };
+    // Tag field - the shape of this figure
+    final Shape shape;
+    
+    // These fields are used only if shape is RECTANGLE
+    double length;
+    double width;
+  	
+    // This field is used only if shape is CIRCLE
+    double radius;
+    
+    // Constructor for circle
+    Figure(double radius) {
+      shape = Shape.CIRCLE;
+      this.radius = radius;
+    }
+
+    // Constructor for rectangle
+    Figure(double length, double width) {
+      shape = Shape.RECTANGLE;
+      this.length = length;
+      this.width = width;
+    }
+
+    double area() {
+      switch(shape) {
+        case RECTANGLE:
+          return length * width;
+        case CIRCLE:
+          return Math.PI * (radius * radius);
+        default:
+          throw new AssertionError(shape);
+      }
+    }
+}
+```
+
+Tagged classes have numerous shortcomings:
+- readability is harmed because multiple implementations are jumbled together in a single class
+
+- memory footprint is increased because instances are burdened with irrelevant fields belonging to other flavors
+
+- fields can’t be made final unless constructors initialize irrelevant fields, resulting in more boilerplate
+
+- constructors must set the tag field and initialize the right data fields with no help from the compiler: if you initialize the wrong fields, the program will fail at runtime
+
+- you can’t add a flavor to a tagged class unless you can modify its source file. If you do add a flavor, you must remember to add a case to every switch statement, or the class will fail at runtime
+
+- the data type of an instance gives no clue as to its flavor
+
+There is a better implementation, using class hierarchy. First we define an abstract class containing an abstract method for each method in the tagged class whose behavior depends on the tag value. Next, define a concrete subclass of the root class for each flavor of the original tagged class. 
+
+```java
+  // Class hierarchy replacement for a tagged class
+  abstract class Figure {
+    abstract double area();
+  }
+
+  class Circle extends Figure {
+    final double radius;
+  
+    Circle(double radius) { 
+      this.radius = radius; 
+    }
+  
+    @Override
+    double area() {
+       return Math.PI * (radius *radius); 
+    }
+  } 
+
+  class Rectangle extends Figure {
+    final double length;
+    final double width;
+
+    Rectangle(double length, double width) {
+      this.length = length;
+      this.width = width;
+    }
+
+    @Override 
+    double area() { 
+      return length * width; 
+    }
+  }
+```
+
+This code is much more simple and clear. The implementation of each flavor is allotted its own class, and none of these classes is encumbered by irrelevant data fields. All fields are final. The compiler ensures that each class’s constructor initializes its data fields and that each class has an implementation for every abstract method declared in the root class. This eliminates the possibility of a runtime failure due to a missing switch case. There is a separate data type associated with each flavor, allowing programmers to indicate the flavor of a variable and to restrict variables and input parameters to a particular flavor. Another advantage of class hierarchies is that they can be made to reflect natural hierarchical relationships among types, allowing for increased flexibility and better compile-time type checking. 
+
+Suppose the tagged class in the first example also allowed for squares. The class hierarchy could be made to reflect the fact that a square is a special kind of rectangle (assuming both are immutable):
+
+```java
+class Square extends Rectangle {
+  Square(double side) {
+    super(side, side);
+  }
+}
+```
+
+
 **The default method construct was added to allow the addition of methods to existing interfaces.** The declaration for a default method includes a default implementation that is used by all classes that implement the interface but do not implement the default method.
 
 While the addition of default methods makes it possible to add methods to an existing interface, there is no guarantee that these methods will work in all preexisting implementations. 
