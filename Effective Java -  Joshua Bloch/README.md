@@ -795,9 +795,52 @@ Nonstatic member classes, anonymous and local classes are  known as inner classe
 
 If a nested class needs to be visible outside of a single method or is too long to fit comfortably inside a method, use a member class. If each instance of a member class needs a reference to its enclosing instance, make it nonstatic; otherwise, make it static. Assuming the class belongs inside a method, if you need to create instances from only one location and there is a preexisting type that characterizes the class, make it an anonymous class; otherwise, make it a local class.
 
+### Item 25: Limit source files to a single top-level class
+
 
 ## Chapter 5. Generics
 ### Item 26: Don’t use raw types
+
+If you use raw types for example only `List` and you want to add only numbers to it, then accidentaly add `String` and try to foreach and sum the elements, you won’t discover the error until runtime, long after it has happened.
+
+**Parameterized collection adds typesafety.**
+
+For example: `private final Collection<Stamp> stamps = ... ;`
+
+From this declaration, the compiler knows that stamps should contain only `Stamp `instances and guarantees it to be true, assuming your entire codebase compiles without emitting any warnings. 
+
+**The compiler inserts invisible casts for you when retrieving elements from collections and guarantees that they won’t fail.**
+
+Difference between the raw type `List` and the parameterized type `List<Object>`:
+  The former has opted out of the generic type system, while the latter has explicitly told the compiler that it is capable of holding objects of any type. While you can pass a `List<String>` to a parameter of type `List`, you can’t pass it to a parameter of type `List<Object>`. There are sub-typing rules for generics, and `List<String>` is a subtype of the raw type `List`, but not of the parameterized type `List<Object>`. As a consequence, **you lose type safety if you use a raw type such as `List`, but not if you use a parameterized type such as `List<Object>`.**
+
+If you want to use a generic type but you don’t know or care what the actual type parameter is, you can use a **question mark instead (unbounded wildcard types)**.
+ For example, the unbounded wildcard type for the generic type `Set<E>` is `Set<?>`. It is the most general parameterized Set type, capable of holding any set. The wildcard type is safe and the raw type isn’t. You can put any element into a collection with a raw type, easily corrupting the collection’s type invariant. Not only can’t you put any element (other than null) into a `Collection<?>`, but you can’t assume anything about the type of the objects that you get out. If these restrictions are unacceptable, you can use generic methods or bounded wildcard types.
+
+Because generic type information is erased at runtime, it is illegal to use the `instanceof` operator on parameterized types other than unbounded wildcard types. The use of unbounded wildcard types in place of raw types does not affect the behavior of the instanceof operator in any way. In this case, the angle brackets and question marks are just noise. This is the preferred way to use the instanceof operator with generic types:
+
+```java
+// Legitimate use of raw type - instanceof operator
+if (o instanceof Set) { // Raw type
+  Set<?> s = (Set<?>) o; // Wildcard type
+  ...
+}
+```
+
+| Term                    | Example | 
+| :-----------------------|---------| 
+| Parameterized type      | `List<String>`
+| Actual type parameter   | `String`
+| Generic type            | `List<E>`
+| Formal type parameter   | `E`
+| Unbounded wildcard type | `List<?>`
+| Raw type                | `List`
+| Bounded type parameter  | `<E extends Number>`
+| Recursive type bound    | `<T extends Comparable<T>>`
+| Bounded wildcard type   | `List<? extends Number>`
+| Generic method          | `static <E> List<E>` `asList(E[] a)`
+| Type token              | `String.class`
+
 ### Item 27: Eliminate unchecked warnings
 ### Item 28: Prefer lists to arrays
 ### Item 29: Favor generic types
