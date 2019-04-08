@@ -743,6 +743,58 @@ Using default methods to add new methods to existing interfaces should be avoide
 
 If an interface contains a minor flaw, it may irritate its users forever, if an interface is severely deficient, it may doom the API that contains it.
 
+### Item 24: Favor static member classes over nonstatic
+
+**A nested class is a class defined within another class.**
+
+A nested class should exist only to serve its enclosing class. If a nested class would be useful in some other context, then it should be a top-level class. 
+
+There are four kinds of nested classes: 
+- static member classes
+- nonstatic member classes
+- anonymous classes
+- local classes
+
+Nonstatic member classes, anonymous and local classes are  known as inner classes.
+
+1. Static member class:
+
+  A class that is declared inside another class and has access to all of the enclosing class's members, even those declated private. One common use of a static member class is as a **public helper class**, useful only in conjunction with its outer class. 
+  For example: Calculator.Operation.PLUS;
+ 
+2. Nonstatic member class:
+
+  Each instance of a nonstatic member class is implicitly associated with an enclosing instance of its containing class. Within instance methods of a nonstatic member class, you can invoke methods on the enclosing instance or obtain a reference to the enclosing instance. If an instance of a nested class can exist in isolation from an instance of its enclosing class, then the nested class must be a static member class: **it is impossible to create an instance of a nonstatic member class without an enclosing instance.**
+
+  ```java
+    // Typical use of a nonstatic member class
+    public class MySet<E> extends AbstractSet<E> {
+      @Override 
+      public Iterator<E> iterator() {
+        return new MyIterator();
+      }
+
+      private class MyIterator implements Iterator<E> {
+        //...
+      }
+    }
+  ```
+
+3. Anonymous class
+
+  A class with no name. It is simultaneously declared and instantiated at the point of use. Anonymous classes are permitted at any point in the code where an expression is legal. Anonymous classes have enclosing instances if and only if they occur in a nonstatic context. But even if they occur in a static context, they cannot have any static members other than constant variables, which are final primitive or string fields initialized to constant expressions.
+
+  - You can’t instantiate anonymous classes except at the point they’re declared.
+  - You can’t perform instanceof tests or do anything else that requires you to name the class.
+  - You can’t declare an anonymous class to implement multiple interfaces or to extend a class and implement an interface at the same time. 
+  - Clients of an anonymous class can’t invoke any members except those it inherits from its supertype.
+
+4. Local class:
+  
+  A local class can be declared practically anywhere a local variable can be declared and obeys the same scoping rules. They have names and can be used repeatedly. Also, they have enclosing instances only if they are defined in a nonstatic context, and they cannot contain static members and like anonymous classes. They should be kept short so as not to harm readability.
+
+If a nested class needs to be visible outside of a single method or is too long to fit comfortably inside a method, use a member class. If each instance of a member class needs a reference to its enclosing instance, make it nonstatic; otherwise, make it static. Assuming the class belongs inside a method, if you need to create instances from only one location and there is a preexisting type that characterizes the class, make it an anonymous class; otherwise, make it a local class.
+
 
 ## Chapter 5. Generics
 ### Item 26: Don’t use raw types
