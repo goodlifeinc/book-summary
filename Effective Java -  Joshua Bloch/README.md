@@ -803,29 +803,34 @@ If a nested class needs to be visible outside of a single method or is too long 
 
 If you use raw types for example only `List` and you want to add only numbers to it, then accidentaly add `String` and try to foreach and sum the elements, you won’t discover the error until runtime, long after it has happened.
 
+**It pays to discover errors as soon as possible after they are made, ideally at compile time.**
+
 **Parameterized collection adds typesafety.**
 
 For example: `private final Collection<Stamp> stamps = ... ;`
 
-From this declaration, the compiler knows that stamps should contain only `Stamp `instances and guarantees it to be true, assuming your entire codebase compiles without emitting any warnings. 
+From this declaration, the compiler knows that stamps should contain only `Stamp` instances and guarantees it to be true, assuming your entire codebase compiles without emitting any warnings. 
 
 **The compiler inserts invisible casts for you when retrieving elements from collections and guarantees that they won’t fail.**
 
 Difference between the raw type `List` and the parameterized type `List<Object>`:
   The former has opted out of the generic type system, while the latter has explicitly told the compiler that it is capable of holding objects of any type. While you can pass a `List<String>` to a parameter of type `List`, you can’t pass it to a parameter of type `List<Object>`. There are sub-typing rules for generics, and `List<String>` is a subtype of the raw type `List`, but not of the parameterized type `List<Object>`. As a consequence, **you lose type safety if you use a raw type such as `List`, but not if you use a parameterized type such as `List<Object>`.**
 
-If you want to use a generic type but you don’t know or care what the actual type parameter is, you can use a **question mark instead (unbounded wildcard types)**.
- For example, the unbounded wildcard type for the generic type `Set<E>` is `Set<?>`. It is the most general parameterized Set type, capable of holding any set. The wildcard type is safe and the raw type isn’t. You can put any element into a collection with a raw type, easily corrupting the collection’s type invariant. Not only can’t you put any element (other than null) into a `Collection<?>`, but you can’t assume anything about the type of the objects that you get out. If these restrictions are unacceptable, you can use generic methods or bounded wildcard types.
+For example if you want to write a method that takes two sets and returns the number of elements they have in common, you might be tempted to use raw types, because the elements type is unknown and doesn't matter. And the method will work, but it is dangerous. Instead you can use **unbounded wildcard types (question mark instead)**
+
+The unbounded wildcard type for the generic type `Set<E>` is `Set<?>`. It is the most general parameterized Set type, capable of holding any set. The wildcard type is safe and the raw type isn’t. You can put any element into a collection with a raw type, easily corrupting the collection’s type invariant.
 
 Because generic type information is erased at runtime, it is illegal to use the `instanceof` operator on parameterized types other than unbounded wildcard types. The use of unbounded wildcard types in place of raw types does not affect the behavior of the instanceof operator in any way. In this case, the angle brackets and question marks are just noise. This is the preferred way to use the instanceof operator with generic types:
 
 ```java
 // Legitimate use of raw type - instanceof operator
-if (o instanceof Set) { // Raw type
-  Set<?> s = (Set<?>) o; // Wildcard type
+if (o instanceof Set) {   // Raw type
+  Set<?> s = (Set<?>) o;  // Wildcard type
   ...
 }
 ```
+
+Note that once you’ve determined that o is a `Set`, you must cast it to the wildcard type `Set<?>`, not the raw type `Set`. This is a checked cast, so it will not cause a compiler warning
 
 | Term                    | Example | 
 | :-----------------------|---------| 
@@ -841,7 +846,19 @@ if (o instanceof Set) { // Raw type
 | Generic method          | `static <E> List<E>` `asList(E[] a)`
 | Type token              | `String.class`
 
+
 ### Item 27: Eliminate unchecked warnings
+
+When you program with generics, you will see many compiler warnings: unchecked cast warnings, unchecked method invocation warnings, unchecked parameterized vararg type warnings, and unchecked conversion warnings.
+
+Eliminate every unchecked warning that you can. If you eliminate all warnings, you are assured that your code is typesafe. It means that you won’t get a `ClassCastException` at runtime.If you can’t eliminate a warning, but you can prove that the code that provoked the warning is typesafe, then suppress the warning with an `@SuppressWarnings` ("unchecked") annotation.
+
+Always use the `SuppressWarnings` annotation on the smallest scope possible, typically a variable declaration or a very short method or constructor. Never use it on an entire class. 
+
+If you are using the `SuppressWarnings` annotation on a method or constructor that’s more than one line long, you may be able to move it onto a local variable declaration.
+
+Every time you use a `@SuppressWarnings`("unchecked") annotation, add a comment saying why it is safe to do so. This will help others understand the code, and more importantly, it will decrease the odds that someone will modify the code so as to make the computation unsafe. 
+
 ### Item 28: Prefer lists to arrays
 ### Item 29: Favor generic types
 ### Item 30: Favor generic methods
