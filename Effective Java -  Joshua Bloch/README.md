@@ -1046,6 +1046,20 @@ Never use the exception-based loop in preference to the tried loop.
 
 
 ### Item 70: Use checked exceptions for recoverable conditions and runtime exceptions for programming errors
+
+Java provides three kinds of throwables: checked exceptions, runtime exceptions, and errors. 
+
+The cardinal rule in deciding whether to use a checked or an unchecked exception is this: use checked exceptions for conditions from which the caller can reasonably be expected to recover. By throwing a checked exception, you force the caller to handle the exception in a catch clause or to propagate it outward. 
+
+There are two kinds of unchecked throwables: runtime exceptions and errors. 
+They are identical in their behavior: both are throwables that needn’t, and generally shouldn’t, be caught. 
+
+If a program throws an unchecked exception or an error, it is generally the case that recovery is impossible and continued execution would do more harm than good. 
+If a program does not catch such a throwable, it will cause the current thread to halt with an appropriate error message.
+Use runtime exceptions to indicate programming errors. The great majority of runtime exceptions indicate precondition violations. A precondition violation is simply a failure by the client of an API to adhere to the contract established by the API specification. 
+
+If you believe a condition is likely to allow for recovery, use a checked exception; if not, use a runtime exception. If it isn’t clear whether recovery is possible, you’re probably better off using an unchecked exception.
+
 ### Item 71: Avoid unnecessary use of checked exceptions
 ### Item 72: Favor the use of standard exceptions
 ### Item 73: Throw exceptions appropriate to the abstraction
