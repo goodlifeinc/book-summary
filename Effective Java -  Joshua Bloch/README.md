@@ -1027,6 +1027,24 @@ Using the string concatenation operator repeatedly to concatenate n strings requ
 
 ## Chapter 10. Exceptions
 ### Item 69: Use exceptions only for exceptional conditions
+
+```java
+  // Horrible abuse of exceptions. Don't ever do this!
+  try {
+    int i = 0;
+    while(true)
+      range[i++].climb();
+  } catch (ArrayIndexOutOfBoundsException e) {
+  }
+```
+
+Never use the exception-based loop in preference to the tried loop.
+
+**Exceptions are, as their name implies, to be used only for exceptional conditions; they should never be used for ordinary control flow.**
+
+**A well-designed API must not force its clients to use exceptions for ordinary control flow.**
+
+
 ### Item 70: Use checked exceptions for recoverable conditions and runtime exceptions for programming errors
 ### Item 71: Avoid unnecessary use of checked exceptions
 ### Item 72: Favor the use of standard exceptions
