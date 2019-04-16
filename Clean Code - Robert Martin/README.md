@@ -27,3 +27,22 @@ Use ```Customer```, ```WikiPage```, ```Account```, and ```AddressParser```and av
    - Avoid using the same word for two purposes - instead of using only add for everything, use insert or append instead.
 
 7. **The scope rule** - variable names should be short, even one letter if they are in a tiny little scope, but they should be long if they are in a big, long scope. Global variable names should be long. Functions follows the oposite rule: Function names should be short, if they've got a long scope, and they should be long and descriptive if they have a short scope.The same rule goes for classes: short names for public classes and longer names for private classes in tiny scopes.
+
+## Chapter 3: Functions
+
+#### Functions should be small
+
+**They should be very small.** The size of the functions should be max 7 lines. This implies that the blocks within if statements, else statements, while statements, and so on should be one line long. Probably that line should be a function call. This also implies that functions should not be large enough to hold nested structures. This makes the functions easier to read and understand.
+
+#### Functions should do only one thing
+
+**FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.**
+
+In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction. Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Like broken windows, once details are mixed with essential concepts, more and more
+details tend to accrete within the function.
+
+#### Reading Code from Top to Bottom: The Stepdown Rule
+
+We want the code to read like a top-down narrative. We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. 
+
+Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
