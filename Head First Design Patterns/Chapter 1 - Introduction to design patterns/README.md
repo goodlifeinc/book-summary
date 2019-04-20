@@ -29,3 +29,8 @@ Not only does it let you encapsulate a family of algorithms into their own set o
 1. Encapsulate what varies.
 2. Favor composition over inheritence.
 3. Program to interfaces, not implementations.
+
+Useful information:
+[Christopher Okhravi - Strategy pattern](https://www.youtube.com/watch?v=v9ejT8FO-7I&t=)
+[Christopher Okhravi - Strategy pattern - Screencast Ep.1](https://www.youtube.com/watch?v=13nftsQUUE0)
+[Christopher Okhravi - Strategy pattern - Screencast Ep.2](https://www.youtube.com/watch?v=slfeCvztnT4)
