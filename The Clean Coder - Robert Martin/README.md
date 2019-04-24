@@ -117,7 +117,8 @@
 
 ## Chapter 3: Saying Yes
 
-**Say. Mean. Do.**
+1. **Say. Mean. Do.**
+
     There are three parts to making a commitment.
     1. **You say you’ll do it.**
     2. **You mean it.**
@@ -129,14 +130,14 @@
 
     Instead of trusting our guts, we can use some language-related tricks to try and figure out if people really mean what they say. And by changing what we say, we can start taking care of steps 1 and 2 of the previous list on our own. When we say we will commit to something, and we need to mean it.
 
-1. Recognizing lack of commitment
+2. Recognizing lack of commitment
 
     Signs of noncommitment:
     - *Need\should.* “We need to get this done.” “I need to lose weight.” “Someone should make that happen.”
     - *Hope\wish.* “I hope to get this done by tomorrow.” “I hope we can meet again some day.” “I wish I had time for that.” “I wish this computer was faster.”
     - *Let’s.* (not followed by “I . . .”) “Let’s meet sometime.” “Let’s finish this thing.”
 
-2. What does commitment sound like?
+3. What does commitment sound like?
 
     The secret ingredient to recognizing real commitment is to look for sentences that sound like this: **I will ... by ...** (example: I will finish this by Tuesday.)
 
@@ -148,7 +149,7 @@
     If you can’t make your commitment, the most important thing is to raise a red
     flag as soon as possible to whoever you committed to. If you don’t tell anyone about the potential problem as soon as possible, you’re not giving anyone a chance to help you follow through on your commitment.
 
-3. Learn how to say yes
+4. Learn how to say yes
 
     Professionals are not required to say yes to everything that is asked of them. However, they should work hard to find creative ways to make “yes” possible. When professionals say yes, they use the language of commitment so that there is no doubt about what they’ve promised.
 
