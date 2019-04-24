@@ -78,3 +78,42 @@
 - know your field
 - practice - train your fingers and your brain with solving simple problems
 - know your domain
+
+## Chapter 2: Saying No
+
+
+1. Learn to say NO
+
+    **Professionals speak truth to power. Professionals have the courage to say NO to their managers.**
+
+    Slaves are not allowed to say no. Laborers may be hesitant to say no. But professionals are expected to say no. Indeed, good managers crave someone who has the guts to say no. It’s the only way you can really get anything done.
+
+    The hard decisions are best made through the confrontation of adversarial roles.
+
+2. Why in less important than the fact
+
+    The why is a lot less important than the fact. Still, knowing why might help your manager to understand, and therefore to accept, the fact.
+
+3. High stakes
+
+    The most important time to say no is when the stakes are highest. The higher the stakes, the more valuable no becomes.
+
+4. Team player
+
+    Being a team player means playing your position as well as you possibly can, and helping out your teammates when they get into a jam. A team-player communicates frequently, keeps an eye out for his or her teammates, and executes his or her own responsibilities as well as possible. A team player is not someone who says yes all the time.
+
+5. Never say "I will try"
+
+    **There is no trying.**
+    If there is extra effort she could apply, then you must not have been applying all your effort before. The promise to try is an admission that you’ve been holding back, that you have a reservoir of extra effort that you can apply. This puts the burden on you. If your “trying” does not lead to the desired outcome, you will have failed.
+
+    By promising to try you are saying that you have a new plan. If you don’t have a new plan, if you don’t make a change to your behavior, if you do everything exactly as you would have before you promised to “try,” then what does trying mean?
+
+    If you are not holding back some energy in reserve, if you don’t have a new plan, if you aren’t going to change your behavior, and if you are reasonably confident in your original estimate, then promising to try is fundamentally dishonest. You are lying. And you are probably doing it to save face and to avoid a confrontation.
+
+
+**Remember:**
+- professionals have the courage to say NO
+- the time to say no is when the stakes are highest
+- team player is not someone who says yes all the time
+- trying actually means lying
