@@ -66,7 +66,6 @@
 
     Your employer’s problems are your problems. You need to understand what those problems are and work toward the best solutions. As you develop a system you need to put yourself in your employer’s shoes and make sure that the features you are developing are really going to address your employer’s needs.
 
-
 **Remember:**
 - take responsibility
 - be ready to apologies
@@ -81,7 +80,6 @@
 
 ## Chapter 2: Saying No
 
-
 1. Learn to say NO
 
     **Professionals speak truth to power. Professionals have the courage to say NO to their managers.**
@@ -90,7 +88,7 @@
 
     The hard decisions are best made through the confrontation of adversarial roles.
 
-2. Why in less important than the fact
+2. Why is less important than the fact
 
     The why is a lot less important than the fact. Still, knowing why might help your manager to understand, and therefore to accept, the fact.
 
@@ -111,9 +109,50 @@
 
     If you are not holding back some energy in reserve, if you don’t have a new plan, if you aren’t going to change your behavior, and if you are reasonably confident in your original estimate, then promising to try is fundamentally dishonest. You are lying. And you are probably doing it to save face and to avoid a confrontation.
 
-
 **Remember:**
 - professionals have the courage to say NO
 - the time to say no is when the stakes are highest
 - team player is not someone who says yes all the time
 - trying actually means lying
+
+## Chapter 3: Saying Yes
+
+**Say. Mean. Do.**
+    There are three parts to making a commitment.
+    1. **You say you’ll do it.**
+    2. **You mean it.**
+    3. **You actually do it.**
+
+    There are very few people who, when they say something, they mean it and then actually get it done. There are some who will say things and mean them, but they never get it done. And there are far more people who promise things and don’t even mean to do them.
+
+    Ever heard someone say, “Man, I really need to lose some weight,” and you knew they are not going to do anything about it? It happens all the time.
+
+    Instead of trusting our guts, we can use some language-related tricks to try and figure out if people really mean what they say. And by changing what we say, we can start taking care of steps 1 and 2 of the previous list on our own. When we say we will commit to something, and we need to mean it.
+
+1. Recognizing lack of commitment
+
+    Signs of noncommitment:
+    - *Need\should.* “We need to get this done.” “I need to lose weight.” “Someone should make that happen.”
+    - *Hope\wish.* “I hope to get this done by tomorrow.” “I hope we can meet again some day.” “I wish I had time for that.” “I wish this computer was faster.”
+    - *Let’s.* (not followed by “I . . .”) “Let’s meet sometime.” “Let’s finish this thing.”
+
+2. What does commitment sound like?
+
+    The secret ingredient to recognizing real commitment is to look for sentences that sound like this: **I will ... by ...** (example: I will finish this by Tuesday.)
+
+    When you use it and you say you'll do something there is only a binary result is possible - you either get it done, or you don’t. If you don’t get it done, people can hold you up to your promises. You will feel bad about not doing it. You will feel awkward telling someone about not having done it (if that someone heard you promise you will).
+
+    Something very important is to ALWAYS commit to things that you have full control of.
+    If the end goal depends on someone else, you should commit to specific actions that bring you closer to the end goal.
+
+    If you can’t make your commitment, the most important thing is to raise a red
+    flag as soon as possible to whoever you committed to. If you don’t tell anyone about the potential problem as soon as possible, you’re not giving anyone a chance to help you follow through on your commitment.
+
+3. Learn how to say yes
+
+    Professionals are not required to say yes to everything that is asked of them. However, they should work hard to find creative ways to make “yes” possible. When professionals say yes, they use the language of commitment so that there is no doubt about what they’ve promised.
+
+**Remember:**
+- Say. Mean. Do.
+- always commit to things that you have full controll of
+- if you can's make your commitment, inform the person or people whoever you committed to as soon as possible
