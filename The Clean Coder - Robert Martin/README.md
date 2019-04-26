@@ -195,3 +195,26 @@
     There are lots of ways to improve your skills. You can repeat simple exercises over and over again to train your brain and fingers how to move and react. As you practice you may descover subtle improvements and effeciencies either in your motions or in the solution itself. 
 
     Other good ways is pair-programming or contributing to an open source projects. Learn new languages, contribute to projects constantly, read books ... PRACTICE! 
+    
+## Chapter 7: Acceptance testing
+
+1. Acceptance tests definition
+    
+    Acceptance tests are  tests written by a collaboration of the stakeholders and the programmers in order to define when a requirement is done.
+
+2. Definition of Done
+
+    **Professional developers definition of done: Done means all code written, all tests pass, QA and the stakeholders have accepted!**
+
+3. Purpose of acceptance tests
+    The purpose of acceptance tests is communication, clarity, and precision. By agreeing to them, the developers, stakeholders, and testers all understand what the plan for the system behavior is. 
+
+    As a professional it is your job to help your team create the best software they can. That means that everybody needs to watch out for errors and slip-ups, and work together to correct them.
+
+    Acceptance tests are written by the business for the business. They are formal requirements documents that specify how the system should behave from the business’ point of view. The audience is the business and the programmers.
+
+    Unit tests and acceptance tests are documents first, and tests second. Their primary purpose is to formally document the design, structure, and behavior of the system. The fact that they automatically verify the design, structure, and behavior that they specify is wildly useful, but the specification is their true purpose.
+
+4. Continuous integration
+    
+    All unit tests and acceptance tests are run several times per day in a continuous integration system. This system should be triggered by the source code control system. Every time someone commits a module, the CI system should kick off a build, and then run all the tests in the system.
