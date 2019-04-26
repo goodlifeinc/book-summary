@@ -195,7 +195,7 @@
     There are lots of ways to improve your skills. You can repeat simple exercises over and over again to train your brain and fingers how to move and react. As you practice you may descover subtle improvements and effeciencies either in your motions or in the solution itself. 
 
     Other good ways is pair-programming or contributing to an open source projects. Learn new languages, contribute to projects constantly, read books ... PRACTICE! 
-    
+
 ## Chapter 7: Acceptance testing
 
 1. Acceptance tests definition
@@ -218,3 +218,35 @@
 4. Continuous integration
     
     All unit tests and acceptance tests are run several times per day in a continuous integration system. This system should be triggered by the source code control system. Every time someone commits a module, the CI system should kick off a build, and then run all the tests in the system.
+
+## Chapter 8: Testing strategies
+
+1. The test automation pyramid
+
+- Unit tests
+    These tests are written by programmers, for programmers, in the programming language of the system. The intent of these tests is to specify the system at the lowest level. Developers write these tests before writing production code as a way to specify what they are about to write. They are executed as part of Continuous Integration to ensure that the intent of the programmers’ is upheld. Unit tests provide as close to 100% coverage as is practical.
+
+- Component tests
+
+    Component test wraps a component. It passes input data into the component and gathers output data from it. It tests that the output matches the input. Any other system components are decoupled from the test using appropriate mocking and test-doubling techniques.
+
+    Component tests are written by QA and Business with assistance from development.
+    Component tests cover roughly half the system. They are directed more towards happy-path situations and very obvious corner, boundary, and alternate-path cases.
+
+- Integration tests
+
+    Integration tests assemble groups of components and test how well they communicate with each other. The other components of the system are decoupled as usual with appropriate mocks and test-doubles.
+
+    Integration tests are choreography tests. They do not test business rules. Rather, they test how well the assembly of components dances together. They are plumbing tests that make sure that the components are properly connected and can clearly communicate with each other.
+
+    Integration tests are typically written by the system architects, or lead designers, of the system. The tests ensure that the architectural structure of the system is sound. They are typically not executed as part of the Continuous Integration suite, because they often have longer runtimes. Instead, these tests are run periodically (nightly, weekly, etc.) as deemed necessary by their authors.
+
+- System tests
+
+    These are automated tests that execute against the entire integrated system. They are the ultimate integration tests. They do not test business rules directly. Rather, they test that the system has been wired together correctly and its parts interoperate according to plan.
+    
+    These tests are written by the system architects and technical leads. System tests cover perhaps 10% of the system. This is because their intent is not to ensure correct system behavior, but correct system construction.
+
+- Manual explor atory tests
+
+    These tests are not automated, nor are they scripted. The intent of these tests is to explore the system for unexpected behaviors while confirming expected behaviors.
