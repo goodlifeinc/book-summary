@@ -186,3 +186,12 @@
 **Remember:**
 - test driven development makes your code cleaner and more flexible 
 - unit tests are documentation
+
+## Chapter 6: Practicing
+
+1. Practice makes perfect
+
+    Practicing is very important! 
+    There are lots of ways to improve your skills. You can repeat simple exercises over and over again to train your brain and fingers how to move and react. As you practice you may descover subtle improvements and effeciencies either in your motions or in the solution itself. 
+
+    Other good ways is pair-programming or contributing to an open source projects. Learn new languages, contribute to projects constantly, read books ... PRACTICE! 
