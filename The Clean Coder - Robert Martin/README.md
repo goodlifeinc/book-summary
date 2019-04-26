@@ -157,3 +157,32 @@
 - Say. Mean. Do.
 - always commit to things that you have full controll of
 - if you can's make your commitment, inform the person or people whoever you committed to as soon as possible
+
+
+
+
+## Chapter 5: Test Driven Development
+
+1. The three laws od TDD:
+
+    - You are not allowed to write any production code until you have first written a failing unit test.
+    - You are not allowed to write more of a unit test than is sufficient to fail—and not compiling is failing.
+    - You are not allowed to write more production code that is sufficient to pass the currently failing unit test.
+
+    You begin by writing a small portion of a unit test. But within a few seconds you must mention the name of some class or function you have not written yet, thereby causing the unit test to fail to compile. So you must write production code that makes the test compile. But you can’t write any more than that, so you start writing more unit test code.
+
+    When you have a suite of tests that you trust, then you lose all fear of making changes. When you see bad code, you simply clean it on the spot.
+
+2. Documentation
+
+    Each of the unit tests you write when you follow the three laws is an example, written in code, describing how the system should be used. If you follow the three laws, then there will be a unit test that describes how to create every object in the system, every way that those objects can be created. There will be a unit test that describes how to call every function in the system every way that those functions can meaningfully be called. For anything you need to know how to do, there will be a unit test that describes it in detail.
+
+    **The unit tests are documents.** They describe the lowest-level design of the system. They are unambiguous, accurate, written in a language that the audience understands, and are so formal that they execute. **They are the best kind of low-level documentation that can exist.**
+
+3. Sometimes TDD does't work
+
+    But there are times when following the three laws is simply impractical or inappropriate. These situations are rare, but they exist. No professional developer should ever follow a discipline when that discipline does more harm than good.
+
+**Remember:**
+- test driven development makes your code cleaner and more flexible 
+- unit tests are documentation
