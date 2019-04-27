@@ -158,7 +158,7 @@
 - always commit to things that you have full controll of
 - if you can's make your commitment, inform the person or people whoever you committed to as soon as possible
 
-
+## Chapter 4: Coding
 
 
 ## Chapter 5: Test Driven Development
@@ -279,5 +279,32 @@
 
     Your time is divided into tomato and non-tomato time. Tomato time is productive. It is within tomatoes that you get real work done. Time outside of tomatoes is either distractions, meetings, breaks, or other time that is not spent working on your tasks.
 
+## Chapter 10: Estimation
 
+ 1. Estimation
 
+    Business likes to view estimates as commitments. Developers like to view estimates as guesses.
+
+2. Commitment 
+
+    **A commitment is something you must achieve.** If you commit to getting something done by a certain date, then you simply have to get it done by that date. If that means you have to work 12 hours a day, on weekends, skipping family vacations, then so be it.
+
+    **Professionals don’t make commitments unless they know they can achieve them.**
+
+    **If you are asked to commit to something that you aren’t certain you can do, then you are honor bound to decline.**
+
+    If you are asked to commit to a date that you know you can achieve, but would require long hours, weekends, and skipped family vacations, then the choice is yours; but you’d better be willing to do what it takes.
+
+    Commitment is about certainty. Other people are going to accept your commitments and make plans based upon them. **Missing a commitment is an act of dishonesty only slightly less onerous than an overt lie.**
+
+3. An estimate
+    
+    An estimate is a guess. No commitment is implied. No promise is made. Missing an estimate is not in any way dishonorable.
+    
+    Unfortunately, most software developers are terrible estimators. The reason we are often so bad at estimating is because we don’t understand the true nature of an estimate. An estimate is not a number. An estimate is a distribution.
+
+4. Estimating tasks
+    
+    **The most important estimation resource you have are the people around you.** They can see things that you don’t. They can help you estimate your tasks more accurately than you can estimate them on your own.
+
+    **Breaking large tasks into small ones and estimating the small ones independently is a good technique.** Some errors do integrate out, and breaking the tasks up is a good way to understand those tasks better and uncover surprises.
