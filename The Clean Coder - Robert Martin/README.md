@@ -360,3 +360,19 @@
     Professionals pair because it is the best way to review code. No system should consist of code that hasn’t been reviewed by other programmers. There are many ways to conduct code reviews; most of them are horrifically inefficient. The most efficient and effective way to review code is to collaborate in writing it.
 
     Professionals work together. You can’t work together while you are sitting in corners wearing headphones. So sitt around tables facing each other. Be able to smell each other’s fear. Be able to overhear someone’s frustrated mutterings. Communicate as a unit.
+
+## Chapter 13: Teams and Projects
+
+1. Teams
+
+    It take time for a team to form. The team members start to form relationships. They learn how to collaborate with each other. They learn each other’s quirks, strengths, and weaknesses. Eventually the team begins to gel. There is something truly magical about a gelled team. They can work miracles. They anticipate each other, cover for each other, support each other, and demand the best from each other. They make things happen.
+
+    It takes time for a team like this to work out their differences, come to terms with each other, and really gel. It might take six months. It might even take a year. But once it happens, it’s magic. A gelled team will plan together, solve problems together, face issues together, and get things done. Once this happens, it is ludicrous to break it apart just because a project comes to an end. It’s best to keep that team together and just keep feeding it projects.
+
+2. Projects
+
+    Banks and insurance companies tried to form teams around projects. This is a foolish approach. The teams simply cannot gel. The individuals are only on the project for a short time, and only for a percentage of their time, and therefore never learn how to deal with each other.
+
+    Professional development organizations allocate projects to existing gelled teams, they don’t form teams around projects. A gelled team can accept many projects simultaneously and will divvy up the work according to their own opinions, skills, and abilities. The gelled team will get the projects done.
+
+    Teams are harder to build than projects. Therefore, it is better to form persistent teams that move together from one project to the next and can take on more than one project at a time. The goal in forming a team is to give that team enough time to gel, and then keep it together as an engine for getting many projects done.
