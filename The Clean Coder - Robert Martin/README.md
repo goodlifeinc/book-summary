@@ -250,3 +250,34 @@
 - Manual explor atory tests
 
     These tests are not automated, nor are they scripted. The intent of these tests is to explore the system for unexpected behaviors while confirming expected behaviors.
+
+## Chapter 9: Time management
+
+1. Meetings
+
+    You are responsible for managing your own time. Having too many meetings is a huge time waster, so you don't have to attend every meeting to which you are invited. **Use your time wisely**. So be very careful about which meetings you attend and which you politely refuse.
+
+    When you receive a meeting invitation, don’t accept unless it is a meeting for which your participation is immediately and significantly necessary to the job you are doing now.
+
+    If you find yourself stuck in a meeting that is not a good use of your time, you need to find a way to politely exit that meeting.
+
+2.  Sleep 
+
+    Sleep is extremely important. Get seven-eight hours of sleep every night. It helps your concentration massively.
+
+3. Recharging
+
+    A good long walk, a conversation with friends, a time of just looking out a window can all help to pump the focus-manna back up. Once the manna is gone, you can’t force the focus. You can still write code, but you’ll almost certainly have to rewrite it the next day, or live with a rotting mass for weeks or months. So it’s better to take thirty, or even sixty minutes to de-focus.
+
+4. Muscle focus
+
+    **Muscle focus helps to recharge mental focus.**
+
+    It’s more than a simple recharge. A regular regimen of muscle focus increases the capacity for mental focus.
+
+5. Pomodoro technique
+
+    Your time is divided into tomato and non-tomato time. Tomato time is productive. It is within tomatoes that you get real work done. Time outside of tomatoes is either distractions, meetings, breaks, or other time that is not spent working on your tasks.
+
+
+
