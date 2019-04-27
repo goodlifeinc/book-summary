@@ -308,3 +308,41 @@
     **The most important estimation resource you have are the people around you.** They can see things that you don’t. They can help you estimate your tasks more accurately than you can estimate them on your own.
 
     **Breaking large tasks into small ones and estimating the small ones independently is a good technique.** Some errors do integrate out, and breaking the tasks up is a good way to understand those tasks better and uncover surprises.
+
+## Chapter 11: Pressure
+
+1. Avoid situations that cause pressure
+
+    The professional developer is calm and decisive under pressure. As the pressure grows he adheres to his training and disciplines, knowing that they are the best way to meet the deadlines and commitments that are pressing on him.
+
+    The best way to stay calm under pressure is to avoid the situations that cause pressure.
+
+2. Commitment
+    
+    **It is important to avoid committing to deadlines that we aren’t sure we can meet.**
+
+    The business will always want these commitments because they want to eliminate risk. What we must do is make sure that the risk is quantified and presented to the business so that they can manage it appropriately. 
+
+3. Stay clean
+
+    **The way to go fast, and to keep the deadlines at bay, is to stay clean.** Professionals do not succumb to the temptation to create a mess in order to move quickly. Professionals realize that “quick and dirty” is an oxymoron. **Dirty always means slow!**
+
+    **We can avoid pressure by keeping our systems, our code, and our design as clean as possible.**
+    
+    If you follow the discipline of Test Driven Development in noncrisis times but abandon it during a crisis, then you don’t really trust that TDD is helpful. If you keep your code clean during normal times but make messes in a crisis, then you don’t really believe that messes slow you down. If you pair in a crisis but don’t normally pair, then you believe pairing is more efficient than non-pairing.
+
+    **Choose disciplines that you feel comfortable following in a crisis.** Then follow them all the time. Following these disciplines is the best way to avoid getting into a crisis. Don’t change your behavior when the crunch comes. If your disciplines are the best way to work, then they should be followed even in the depths of a crisis.
+
+4. Manage stress 
+    
+    Manage your stress. Sleepless nights won’t help you get done any faster. Sitting and fretting won’t help either. And the worst thing you could do is to rush! Resist that temptation at all costs. Rushing will only drive you deeper into the hole.
+    
+    Instead, slow down. Think the problem through. Plot a course to the best possible outcome, and then drive towards that outcome at a reasonable and steady pace.
+
+5. Inform your team
+
+    Let your team and your superiors know that you are in trouble. Tell them your best plans for getting out of trouble. Ask them for their input and guidance. Avoid creating surprises. Nothing makes people more angry and less rational than surprises.
+
+6. Fllow your chosen disciplines
+
+    If you follow TDD, then write even more tests than usual. If you are a merciless refactorer, then refactor even more. If you keep your functions small, then keep them even smaller. The only way through the pressure cooker is to rely on what you already know works - your disciplines.
