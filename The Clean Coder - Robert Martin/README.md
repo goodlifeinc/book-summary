@@ -346,3 +346,17 @@
 6. Fllow your chosen disciplines
 
     If you follow TDD, then write even more tests than usual. If you are a merciless refactorer, then refactor even more. If you keep your functions small, then keep them even smaller. The only way through the pressure cooker is to rely on what you already know works - your disciplines.
+
+## Chapter 12: Collaboration
+
+1. Understand the business
+
+    Professional programmers take the time to understand the business. They talk to users about the software they are using. They talk to sales and marketing people about the problems and issues they have. They talk to their managers to understand the short- and long-term goals of the team. In short, they **pay attention to the ship they are sailing on.**
+
+2. Pairing
+
+    **Pair programming is clearly the most efficient way to solve the problem.** All professionals pair. That's because it is the best way to share knowledge with each other. Professionals don’t create knowledge silos. Rather, they learn the different parts of the system and business by pairing with each other. They recognize that although all team members have a position to play, all team members should also be able play another position in a pinch.
+
+    Professionals pair because it is the best way to review code. No system should consist of code that hasn’t been reviewed by other programmers. There are many ways to conduct code reviews; most of them are horrifically inefficient. The most efficient and effective way to review code is to collaborate in writing it.
+
+    Professionals work together. You can’t work together while you are sitting in corners wearing headphones. So sitt around tables facing each other. Be able to smell each other’s fear. Be able to overhear someone’s frustrated mutterings. Communicate as a unit.
