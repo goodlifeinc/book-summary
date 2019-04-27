@@ -1,10 +1,37 @@
 # The Clean Coder: A Code of Conduct for Professional Programmers
 
+[Chapter 1: Professionalism](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-1-professionalism)
+
+[Chapter 2: Saying No](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-2-saying-no)
+
+[Chapter 3: Saying Yes](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-3-saying-yes)
+
+[Chapter 5: Test Driven Development](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-4-coding)
+
+[Chapter 6: Practicing](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-6-practicing)
+
+[Chapter 7: Acceptance Testing](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-7-acceptance-testing)
+
+[Chapter 8: Testing Strategies](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-8-testing-strategies)
+
+[Chapter 9: Time Management](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-9-time-management)
+
+[Chapter 10: Estimation](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-10-estimation)
+
+[Chapter 11: Pressure](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-11-pressure)
+
+[Chapter 12: Collaboration](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-12-collaboration)
+
+[Chapter 13: Teams and Projects](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-13-teams-and-projects)
+
+[Chapter 14: Mentoring, Apprenticeship and Craftsmanship](https://github.com/lusavova/book-summary/tree/master/The%20Clean%20Coder%20-%20Robert%20Martin#chapter-14-mentoring-apprenticeship-and-craftsmanship)
+
+
 ## Chapter 1: Professionalism
 
 1. Professionalism
 
-    **Professionalism is all about taking responsibility.**
+    :exclamation: **Professionalism is all about taking responsibility.**
 
     If a nonprofessional makes an error, the employer cleans up the mess. But when a professional makes a mistake, he cleans up the mess.
 
