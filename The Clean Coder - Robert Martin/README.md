@@ -376,3 +376,17 @@
     Professional development organizations allocate projects to existing gelled teams, they don’t form teams around projects. A gelled team can accept many projects simultaneously and will divvy up the work according to their own opinions, skills, and abilities. The gelled team will get the projects done.
 
     Teams are harder to build than projects. Therefore, it is better to form persistent teams that move together from one project to the next and can take on more than one project at a time. The goal in forming a team is to give that team enough time to gel, and then keep it together as an engine for getting many projects done.
+
+## Chapter 14: Mentoring, Apprenticeship, and Craftsmanship
+
+1. Mentoring
+    
+    There are different kinds of mentoring. You can learn simply from the authors of a very well-written manual, or by observing people and many more different ways.
+
+2. Craftmanship
+
+    A craftsman is someone who works quickly, but without rushing, who provides reasonable estimates and meets commitments. A craftsman knows when to say no, but tries hard to say yes. A craftsman is a professional.
+
+    Craftsmanship is the mindset held by craftsmen. Craftsmanship is a meme that contains values, disciplines, techniques, attitudes, and answers.
+
+    The craftsmanship meme is handed from one person to another. It is taught by elders to the young. It is exchanged between peers. It is observed and relearned, as elders observe the young. Craftsmanship is a contagion, a kind of mental virus. You catch it by observing others and allowing the meme to take hold.
