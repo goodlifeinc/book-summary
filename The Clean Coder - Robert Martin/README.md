@@ -161,6 +161,70 @@
 
 ## Chapter 4: Coding
 
+1. Concentration 
+
+    Distractions are a problem. Clean code requires focus and concentration. Coding at 3 am is never the solution. Never write code when you are tired. Always make sure you sleep well and get enough rest.
+
+    Never brute force to write code when you are anxious. That type of code is almost always garbage. Is you find yourselt in that kind of situation better spend an hour quieting the anxiety and problems and then start to work again.
+
+2. "The Zone"
+
+    "the Zone" is not as good as people think in a working environment. You will be locally very productive, but will often lose sight of the bigger picture and possibly produce not the best design, so you'll have to come back and refactor the code later. So if you are catching yourself falling into the zone, walk away :walking: for five minutes, clear your head, take a break for a little snack :pizza: and then get back to your work.
+
+    The zone is something you want to be in when you are practicing.
+
+3. Music :musical_score:
+
+    Music maight be a big distraction for some people, while for others it can lead to better concentration. Sometimes music can get you into the zone so be carefull about that.
+    
+4. Interuptions
+
+    Pairing can be very helpful as a way to deal interuptions. Your partner can hold the contex of the problem at hand, while you deal with a phone call, or a question from a coworker.
+
+    When you are interupted never be rude to the person interrupting you. Be polite. 
+
+    Test driven develepment is a very good practice to follow, because you develop code in small chunks. If you were interrupted you can return easily to the code.
+
+5. Creative input 
+
+    Creative output depends on creative input.
+
+    Find some creative input that works for you. It might be poetry, movies, arts, music. The time spent away from the usual problems, while being actively stimulated by challenging and creative ideas results in a great ideas.
+
+6. Debbuging
+
+7. Pacing Yourself
+    
+    Know when to go home. If you are tired then go away. If you push your nonfunctioning brain for hour after late-night hour trying to solve a problem, you’ll simply make yourself more tired.
+
+    When you are stuck, when you are tired, disengage for awhile.
+    Try to be involved in a noncreative mental state like driving :car: or taking a shower. :shower:
+
+8. Being Late
+
+    You will be late at some point. It happens to the best. The trick to managing lateness is early detection and transparency.
+
+    If you know you are going be late, never continue to tell everyone, up to the very end, that you will be on time and then let them all down.
+
+    Regularly measure your progress. The best, nominal and worst case. And if these numbers show that you might miss a deadline, never hope that you can get things done. Hope is a project killer.
+
+    Never be tempted to rush. Poor developmet is a guarantee when you try to make a deadline. You can't make yourself code faster or solve problems faster. The only code that can come out of this is a bad stinky mess.
+
+    On of the worst unprofessional things you can do is say you are done, when you are clearly not. To avoid that create a definition of done.
+
+9. Help
+
+    Helping other or asking for help is a significant part of being a software developer.
+
+    When someone offers to help you, be gracious about it. Accept the help gratefully and give yourself to that help.
+
+    Also learn how to ask for help. When you are stuck, or befuddled, or just can’t wrap your mind around a problem, ask someone for help. It is unprofessional to remain stuck when help is easily accessible.
+    
+    Collaboration is critical to effective programming.
+
+    Training of less experienced programmers is the responsibility of those who have more experience.
+
+    It is a matter of professional ethics for senior programmers to spend time taking younger programmers under their wing :bird: and mentoring them. By the same token, those younger programmers have a professional duty to seek out such mentoring from their seniors.
 
 ## Chapter 5: Test Driven Development
 
@@ -293,7 +357,7 @@
 
 5. Pomodoro technique :tomato:
 
-    Your time is divided into tomato :tomato: and non-tomato time. Tomato time is productive. It is within tomatoes that you get real work done. Time outside of tomatoes is either distractions, meetings, breaks, or other time that is not spent working on your tasks.
+    Your time is divided into tomato and non-tomato time. Tomato time is productive. It is within tomatoes that you get real work done. Time outside of tomatoes is either distractions, meetings, breaks, or other time that is not spent working on your tasks.
 
 ## Chapter 10: Estimation
 
