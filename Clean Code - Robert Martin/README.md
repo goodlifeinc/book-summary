@@ -1,6 +1,7 @@
 # Clean Code: A Handbook of Agile Software Craftsmanship (1st Edition) by Robert C. Martin
 
-[Videos](https://cleancoders.com/videos)
+link: [Amazon Book Link](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+link: [CleanCoders Videos](https://cleancoders.com/videos)
 
 [Chapter 1: Clean Code]()\
 [Chapter 2: Meaningful Names]()\
@@ -21,9 +22,11 @@
 [Chapter 17: Smells and Heuristics]()\
 [Appendix A: Concurrency II]()\
 [Appendix B: org.jfree.date.SerialDate]()\
-[Appendix C: Cross References of Heuristics]()\
+[Appendix C: Cross References of Heuristics]()
 
 ## Chapter 1: Clean Code
+
+
 
 ## Chapter 2: Meaningful Names
 
