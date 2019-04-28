@@ -26,99 +26,9 @@
 
 ## Chapter 1: Clean Code
 
-
-
 ## Chapter 2: Meaningful Names
 
-1. **Choose names that reveal intent** (choose them thoughtfully) - they are a tool that you can use to communicate with others. If you have to put a comment that describes your name, it is a bad name.
-    
-2. **Avoid disinformation** - avoid words whose entrenched meanings vary from our intended meaning. Do not add number series or noise words. If names must be different, then they should also mean something different. Also the word variable should never appear in a variable name (The word table should never appear in a table name).
-    - Even if you are coding a hypotenuse and ```hp``` looks like a good abbreviation, it could be disinformative.
-    - Do not refer to a grouping of accounts as an ```accountList``` unless it’s actually a ```List```(instead use: ```accountGroup```, ```bunchOfAccounts```, etc.)
-    - Beware of using names which vary in small ways. Takes a long time to spot the difference:
-        ```XYZControllerForEfficientHandlingOfStrings```
-        ```XYZControllerForEfficientStorageOfStrings```
-    - Number-series naming (```a1```, ```a2```, ```aN```) are not disinformative — they are noninformative. They provide no clue to the author’s intention.
-    - Noise words are another meaningless distinction - If you have a ```Product``` class and another called ```ProductInfo``` or ```ProductData```, you have made the names different without making them mean anything different. Info and Data are indistinct noise words like a, an, and the.
-    - Never use ```NameString``` instead of just ```Name```.
-        
-    ***Remember:*** If you have to read the code to understand what it means, that is a bad name.
-
-3. **Use Pronounceable Names** - other people will have to talk about your code, so make it easy for them. Pick names that they can say. Do not use something like ```genymdhms```, ```getYYYY```, ect.
-
-4. **Use Searchable Names** - single-letter names and numeric constants are not easy to locate across a body of text. Single-letter names can ONLY be used as local variables inside short methods. *The length of a name should correspond to the size of its scope*
-
-5. **Avoid Encodings** - simply adds an extra burden. Do not put ```I``` infront interfaces. Instead of naming it ```IShapeFactory```, use ```ShapeFactory```. You don’t need to prefix member variables with ```m_``` ot anything similar. Your classes and functions should be small enough that you don’t need them. Encodings make your code ***HARD TO READ.***
-
-6. **Choose parse of speech well** 
-   - Class names - classes and objects should have noun or noun phrase. A class name should not be a verb.
-Use ```Customer```, ```WikiPage```, ```Account```, and ```AddressParser```and avoid: ```Manager```, ```Processor```, ```Data```, ```Info```.
-   - Method names - methods should have verb or verb phrase names. Accessors, mutators, and predicates should be named for their value and prefixed with ```get```, ```set```, and ```is```. Use ```postPayment```, ```deletePage```, ```save```, ```getName```, ```setName```, ```isPosted```.
-   - Pick One Word per Concept - it’s confusing to have a controller and a manager and a driver in the same code base.
-   - Avoid using the same word for two purposes - instead of using only add for everything, use insert or append instead.
-
-7. **The scope rule** - variable names should be short, even one letter if they are in a tiny little scope, but they should be long if they are in a big, long scope. Global variable names should be long. Functions follows the oposite rule: Function names should be short, if they've got a long scope, and they should be long and descriptive if they have a short scope.The same rule goes for classes: short names for public classes and longer names for private classes in tiny scopes.
-
 ## Chapter 3: Functions
-
-1. **Functions should be small**
-
-**They should be very small.** The size of the functions should be max 7 lines. This implies that the blocks within if statements, else statements, while statements, and so on should be one line long. Probably that line should be a function call. This also implies that functions should not be large enough to hold nested structures. This makes the functions easier to read and understand.
-
-2. **Functions should do only one thing**
-
-**FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.**
-
-In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction. Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Like broken windows, once details are mixed with essential concepts, more and more
-details tend to accrete within the function.
-
-3. **One Level of Abstraction per Function**
-
-3.1. **The Stepdown Rule**
-
-We want the code to read like a top-down narrative. We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. 
-
-Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
-
-4. **Switch Statements**
-
-5. **Use Descriptive Names**
-
-6. **Function Arguments**
-
-6.1. Common Monadic Forms
-
-6.2. Flag Arguments
-
-6.3. Dyadic Functions
-
-6.4. Triads
-
-6.5. Argument Objects
-
-6.7. Argument Lists
-
-6.8. Verbs and Keywords
-
-7. **Have No Side Effects**
-
-7.1. Output Arguments
-
-8. Command Query Separation
-
-9. Prefer Exceptions to Returning Error Codes
-
-9.1. Extract Try/Catch Blocks
-
-9.2. Error Handling Is One Thing
-
-9.3. The Error.java Dependency Magnet
-
-10. Don’t Repeat Yourself13
-
-11. Structured Programming
-
-12. How Do You Write Functions Like This?
 
 ## Chapter 4: Comments
 
