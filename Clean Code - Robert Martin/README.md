@@ -1,7 +1,7 @@
 # Clean Code: A Handbook of Agile Software Craftsmanship (1st Edition) by Robert C. Martin
 
-link: [Amazon Book Link](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
-link: [CleanCoders Videos](https://cleancoders.com/videos)
+:link: [Amazon Book Link](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
+:link: [CleanCoders Videos](https://cleancoders.com/videos)
 
 [Chapter 1: Clean Code]()\
 [Chapter 2: Meaningful Names]()\
