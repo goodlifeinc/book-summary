@@ -1,4 +1,32 @@
-## Chapter 2: Meaningful names
+# Clean Code: A Handbook of Agile Software Craftsmanship (1st Edition) by Robert C. Martin
+
+[Videos](https://cleancoders.com/videos)
+
+[Chapter 1: Clean Code]()
+[Chapter 2: Meaningful Names]()
+[Chapter 3: Functions]()
+[Chapter 4: Comments]()
+[Chapter 5: Formatting]()
+[Chapter 6: Objects and Data Structures]()
+[Chapter 7: Error Handling]()
+[Chapter 8: Boundaries]()
+[Chapter 9: Unit Tests]()
+[Chapter 10: Classes]()
+[Chapter 11: Systems]()
+[Chapter 12: Emergence]()
+[Chapter 13: Concurrency]()
+[Chapter 14: Successive Refinement]()
+[Chapter 15: JUnit Internals]()
+[Chapter 16: Refactoring SerialDate]()
+[Chapter 17: Smells and Heuristics]()
+[Appendix A: Concurrency II]()
+[Appendix B: org.jfree.date.SerialDate]()
+[Appendix C: Cross References of Heuristics]()
+
+## Chapter 1: Clean Code
+
+## Chapter 2: Meaningful Names
+
 1. **Choose names that reveal intent** (choose them thoughtfully) - they are a tool that you can use to communicate with others. If you have to put a comment that describes your name, it is a bad name.
     
 2. **Avoid disinformation** - avoid words whose entrenched meanings vary from our intended meaning. Do not add number series or noise words. If names must be different, then they should also mean something different. Also the word variable should never appear in a variable name (The word table should never appear in a table name).
@@ -30,19 +58,95 @@ Use ```Customer```, ```WikiPage```, ```Account```, and ```AddressParser```and av
 
 ## Chapter 3: Functions
 
-#### Functions should be small
+1. **Functions should be small**
 
 **They should be very small.** The size of the functions should be max 7 lines. This implies that the blocks within if statements, else statements, while statements, and so on should be one line long. Probably that line should be a function call. This also implies that functions should not be large enough to hold nested structures. This makes the functions easier to read and understand.
 
-#### Functions should do only one thing
+2. **Functions should do only one thing**
 
 **FUNCTIONS SHOULD DO ONE THING. THEY SHOULD DO IT WELL. THEY SHOULD DO IT ONLY.**
 
 In order to make sure our functions are doing “one thing,” we need to make sure that the statements within our function are all at the same level of abstraction. Mixing levels of abstraction within a function is always confusing. Readers may not be able to tell whether a particular expression is an essential concept or a detail. Like broken windows, once details are mixed with essential concepts, more and more
 details tend to accrete within the function.
 
-#### Reading Code from Top to Bottom: The Stepdown Rule
+3. **One Level of Abstraction per Function**
+
+3.1. **The Stepdown Rule**
 
 We want the code to read like a top-down narrative. We want every function to be followed by those at the next level of abstraction so that we can read the program, descending one level of abstraction at a time as we read down the list of functions. 
 
 Making the code read like a top-down set of TO paragraphs is an effective technique for keeping the abstraction level consistent.
+
+4. **Switch Statements**
+
+5. **Use Descriptive Names**
+
+6. **Function Arguments**
+
+6.1. Common Monadic Forms
+
+6.2. Flag Arguments
+
+6.3. Dyadic Functions
+
+6.4. Triads
+
+6.5. Argument Objects
+
+6.7. Argument Lists
+
+6.8. Verbs and Keywords
+
+7. **Have No Side Effects**
+
+7.1. Output Arguments
+
+8. Command Query Separation
+
+9. Prefer Exceptions to Returning Error Codes
+
+9.1. Extract Try/Catch Blocks
+
+9.2. Error Handling Is One Thing
+
+9.3. The Error.java Dependency Magnet
+
+10. Don’t Repeat Yourself13
+
+11. Structured Programming
+
+12. How Do You Write Functions Like This?
+
+## Chapter 4: Comments
+
+## Chapter 5: Formatting
+
+## Chapter 6: Objects and Data Structures
+
+## Chapter 7: Error Handling
+
+## Chapter 8: Boundaries
+
+## Chapter 9: Unit Tests
+
+## Chapter 10: Classes
+
+## Chapter 11: Systems
+
+## Chapter 12: Emergence
+
+## Chapter 13: Concurrency
+
+## Chapter 14: Successive Refinement
+
+## Chapter 15: JUnit Internals
+
+## Chapter 16: Refactoring SerialDate
+
+## Chapter 17: Smells and Heuristics
+
+## Appendix A: Concurrency II
+
+## Appendix B: org.jfree.date.SerialDate
+
+## Appendix C: Cross References of Heuristics
